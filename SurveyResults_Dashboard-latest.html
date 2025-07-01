@@ -3,51 +3,241 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Travel Survey Analysis - 37 Respondents</title>
+    <title>Group Travel Survey Analysis</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; color: #333; }
-        .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
-        .header { text-align: center; color: white; margin-bottom: 30px; padding: 30px 0; }
-        .header h1 { font-size: 2.5rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
-        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; margin: 20px 0; }
-        .stat-item { text-align: center; padding: 20px; background: linear-gradient(135deg, #3498db, #2980b9); color: white; border-radius: 10px; transition: transform 0.3s ease; }
-        .stat-item:hover { transform: scale(1.05); }
-        .stat-item.bachelor { background: linear-gradient(135deg, #e74c3c, #c0392b); }
-        .stat-item.hypothesis { background: linear-gradient(135deg, #9b59b6, #8e44ad); }
-        .stat-item.family { background: linear-gradient(135deg, #27ae60, #229954); }
-        .stat-number { font-size: 2.5rem; font-weight: bold; display: block; }
-        .stat-label { font-size: 0.9rem; opacity: 0.9; }
-        .highlight-card { background: linear-gradient(135deg, #9b59b6, #8e44ad); color: white; border-radius: 15px; padding: 25px; margin: 20px 0; text-align: center; }
-        .highlight-number { font-size: 3rem; font-weight: bold; display: block; margin-bottom: 10px; }
-        .tabs { display: flex; background: rgba(255,255,255,0.1); border-radius: 10px; margin-bottom: 20px; flex-wrap: wrap; }
-        .tab { flex: 1; padding: 15px 20px; background: transparent; border: none; color: white; cursor: pointer; font-size: 1rem; min-width: 120px; transition: all 0.3s ease; }
-        .tab.active { background: rgba(255,255,255,0.2); font-weight: bold; }
-        .tab-content { display: none; }
-        .tab-content.active { display: block; }
-        .dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 25px; margin-bottom: 30px; }
-        .card { background: rgba(255, 255, 255, 0.95); border-radius: 15px; padding: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: transform 0.3s ease; }
-        .card:hover { transform: translateY(-5px); }
-        .card h3 { color: #2c3e50; margin-bottom: 20px; font-size: 1.4rem; border-bottom: 3px solid #3498db; padding-bottom: 10px; }
-        .chart-container { position: relative; height: 300px; margin: 20px 0; }
-        .insight-list { list-style: none; padding: 0; }
-        .insight-list li { background: linear-gradient(90deg, #f8f9fa, #e9ecef); margin: 10px 0; padding: 15px; border-radius: 8px; border-left: 4px solid #3498db; transition: all 0.3s ease; }
-        .insight-list li:hover { background: linear-gradient(90deg, #e3f2fd, #bbdefb); transform: translateX(5px); }
-        .pain-point { border-left-color: #e74c3c !important; }
-        .opportunity { border-left-color: #27ae60 !important; }
-        .quote-card { background: linear-gradient(135deg, #667eea, #764ba2); color: white; border-radius: 15px; padding: 25px; margin: 20px 0; position: relative; overflow: hidden; }
-        .quote-card::before { content: '"'; font-size: 4rem; position: absolute; top: 10px; left: 20px; opacity: 0.3; }
-        .quote-text { font-style: italic; font-size: 1.1rem; margin-bottom: 15px; padding-left: 40px; }
-        .quote-author { text-align: right; font-weight: bold; opacity: 0.8; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+            padding: 30px 0;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+        
+        .stat-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .tabs {
+            display: flex;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            flex-wrap: wrap;
+        }
+        
+        .tab {
+            flex: 1;
+            min-width: 120px;
+            padding: 15px 20px;
+            background: transparent;
+            border: none;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+        
+        .tab.active {
+            background: rgba(255,255,255,0.2);
+            font-weight: bold;
+        }
+        
+        .tab:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .card h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin: 20px 0;
+        }
+        
+        .insight-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .insight-list li {
+            background: linear-gradient(90deg, #f8f9fa, #e9ecef);
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+            transition: all 0.3s ease;
+        }
+        
+        .insight-list li:hover {
+            background: linear-gradient(90deg, #e3f2fd, #bbdefb);
+            transform: translateX(5px);
+        }
+        
+        .pain-point {
+            border-left-color: #e74c3c !important;
+        }
+        
+        .opportunity {
+            border-left-color: #27ae60 !important;
+        }
+        
+        .hypothesis {
+            border-left-color: #f39c12 !important;
+        }
+        
+        .motivation {
+            border-left-color: #9b59b6 !important;
+        }
+        
+        .segment-card {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            color: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 15px 0;
+        }
+        
+        .segment-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .feedback-item {
+            background: rgba(255,255,255,0.1);
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 8px;
+            border-left: 3px solid rgba(255,255,255,0.5);
+        }
+        
+        .quote-card {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .quote-card::before {
+            content: '"';
+            font-size: 4rem;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            opacity: 0.3;
+        }
+        
+        .quote-text {
+            font-style: italic;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            padding-left: 40px;
+        }
+        
+        .quote-author {
+            text-align: right;
+            font-weight: bold;
+            opacity: 0.8;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>🚀 Group Travel Survey Analysis</h1>
-            <p>37 Respondents - MyRideMate Product Strategy</p>
-            <div style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px; font-size: 0.9rem; margin-top: 10px; display: inline-block;">Survey Data: June 30, 2025 | 37 Responses</div>
+            <h1>Group Travel Survey Analysis</h1>
         </div>
         
         <div class="stats-grid">
@@ -55,392 +245,441 @@
                 <span class="stat-number">37</span>
                 <span class="stat-label">Survey Responses</span>
             </div>
-            <div class="stat-item family">
-                <span class="stat-number">46%</span>
-                <span class="stat-label">Family Group Travel</span>
+            <div class="stat-item">
+                <span class="stat-number">55%</span>
+                <span class="stat-label">Family Travelers</span>
             </div>
-            <div class="stat-item bachelor">
-                <span class="stat-number">37%</span>
-                <span class="stat-label">Bachelors Group Travel</span>
+            <div class="stat-item">
+                <span class="stat-number">39%</span>
+                <span class="stat-label">Bachelors (Group)</span>
             </div>
-            <div class="stat-item hypothesis">
-                <span class="stat-number">65%</span>
-                <span class="stat-label">Organizers Enjoy Less</span>
+            <div class="stat-item">
+                <span class="stat-number">6%</span>
+                <span class="stat-label">Bachelors - Solo</span>
             </div>
-            <div class="stat-item hypothesis">
+            <div class="stat-item">
                 <span class="stat-number">27%</span>
-                <span class="stat-label">Felt Left Out</span>
+                <span class="stat-label">Organizers Feel Overwhelmed</span>
             </div>
-            <div class="stat-item hypothesis">
-                <span class="stat-number">73%</span>
-                <span class="stat-label">Use WhatsApp</span>
-            </div>
-        </div>
-
-        <div class="highlight-card">
-            <span class="highlight-number">37%</span>
-            <div class="highlight-text">
-                <strong>Bachelors Group Travel Market Opportunity</strong><br>
-                Bachelors Group (32%) + Solo Travel (5%) combined segment
+            <div class="stat-item">
+                <span class="stat-number">27%</span>
+                <span class="stat-label">Felt Left Out During Planning</span>
             </div>
         </div>
 
         <div class="tabs">
-            <button class="tab active" onclick="showTab('hypothesis-tested')">Hypothesis Tested</button>
-            <button class="tab" onclick="showTab('motivations')">Motivations</button>
-            <button class="tab" onclick="showTab('pain-points')">Pain Points</button>
-            <button class="tab" onclick="showTab('segmentation')">Segmentation</button>
-            <button class="tab" onclick="showTab('opportunities')">Opportunities</button>
+            <button class="tab active" data-tab="demographics">Demographics</button>
+            <button class="tab" data-tab="motivations">Motivations</button>
+            <button class="tab" data-tab="hypothesis">Hypothesis Tested</button>
+            <button class="tab" data-tab="painpoints">Pain Points</button>
+            <button class="tab" data-tab="behaviors">Behaviors</button>
+            <button class="tab" data-tab="segmentation">Segmentation</button>
+            <button class="tab" data-tab="opportunities">Opportunities</button>
         </div>
 
-        <!-- TAB 1: HYPOTHESIS TESTED -->
-        <div id="hypothesis-tested" class="tab-content active">
+        <div id="demographics" class="tab-content active">
             <div class="dashboard-grid">
                 <div class="card">
-                    <h3>🤯 Organizer Overwhelm - VALIDATED</h3>
+                    <h3>📊 Age Distribution</h3>
                     <div class="chart-container">
-                        <canvas id="organizerChart"></canvas>
-                    </div>
-                    <div style="margin-top: 15px; padding: 15px; background: #ffe8e8; border-radius: 8px;">
-                        <strong>✅ VALIDATED:</strong> 65% say organizers enjoy less due to execution burden
+                        <canvas id="ageChart"></canvas>
                     </div>
                 </div>
                 
                 <div class="card">
-                    <h3>😔 Feeling Left Out - CONFIRMED</h3>
+                    <h3>👥 Gender Distribution</h3>
                     <div class="chart-container">
-                        <canvas id="leftOutChart"></canvas>
-                    </div>
-                    <div style="margin-top: 15px; padding: 15px; background: #fff3cd; border-radius: 8px;">
-                        <strong>✅ CONFIRMED:</strong> 27% have felt excluded during group planning
+                        <canvas id="genderChart"></canvas>
                     </div>
                 </div>
                 
                 <div class="card">
-                    <h3>📋 Self-Initiation Burden - INSIGHT</h3>
+                    <h3>🌍 Geographic Distribution</h3>
                     <div class="chart-container">
-                        <canvas id="selfInitiationChart"></canvas>
-                    </div>
-                    <div style="margin-top: 15px; padding: 15px; background: #e8f5e8; border-radius: 8px;">
-                        <strong>✅ INSIGHT:</strong> 44% self-initiate, creating organizer overwhelm cycle
+                        <canvas id="locationChart"></canvas>
                     </div>
                 </div>
                 
                 <div class="card">
-                    <h3>🎭 Group Travel Planners/Organizers Don't Enjoy Trip</h3>
-                    <ul class="insight-list">
-                        <li class="pain-point"><strong>Real Voice:</strong> "Not really because they are the ones who keep getting multiple calls from travel companies at odd hours"</li>
-                        <li class="pain-point"><strong>Real Voice:</strong> "Generally person who leads doesn't get to enjoy a lot since he is arranging most of it"</li>
-                        <li class="pain-point"><strong>Real Voice:</strong> "Probably not as they may be busy in execution rather than living in the moments"</li>
-                        <li class="pain-point"><strong>Real Voice:</strong> "He didn't enjoy as much others because he have responsibilities for take care all accommodations"</li>
-                    </ul>
-                </div>
-                
-                <div class="card">
-                    <h3>😞 Left Out Experience Evidence</h3>
-                    <ul class="insight-list">
-                        <li class="pain-point"><strong>Real Voice:</strong> "My plan was not included and the reason given was not satisfactory"</li>
-                        <li class="pain-point"><strong>Real Voice:</strong> "Sometimes no one responds since they might be busy/lazy to even check and respond for messages"</li>
-                        <li class="pain-point"><strong>Real Voice:</strong> "They selected the place which I didn't like"</li>
-                        <li class="pain-point"><strong>Pattern:</strong> Communication breakdowns lead to exclusion from planning process</li>
-                    </ul>
-                </div>
-                
-                <div class="card">
-                    <h3>🎯 Hypothesis Implications for MyRideMate</h3>
-                    <ul class="insight-list">
-                        <li class="opportunity"><strong>Organizer Relief:</strong> Automate vendor calls, booking management tasks</li>
-                        <li class="opportunity"><strong>Inclusive Planning:</strong> Ensure all voices are heard in decision making</li>
-                        <li class="opportunity"><strong>Load Distribution:</strong> Tools to share planning responsibilities across group</li>
-                        <li class="opportunity"><strong>Enjoyment Focus:</strong> Features to help organizers enjoy the trip too</li>
-                    </ul>
+                    <h3>🎯 Trip Type Preferences</h3>
+                    <div class="chart-container">
+                        <canvas id="tripTypeChart"></canvas>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- TAB 2: MOTIVATIONS -->
         <div id="motivations" class="tab-content">
             <div class="dashboard-grid">
                 <div class="card">
-                    <h3>👥 Bachelors Group Motivations</h3>
+                    <h3>🎯 What People Actually Liked About Travel</h3>
                     <ul class="insight-list">
-                        <li><strong>Adventure Focus:</strong> "We are a gang of people who like trekking/hiking instead of just visiting sight seeing places"</li>
-                        <li><strong>Group Bonding:</strong> "Journey in train most memorable"</li>
-                        <li><strong>Buddy Time:</strong> "Spending time with buddies"</li>
-                        <li><strong>Unique Experiences:</strong> "Likes - Nature and hotel ambience and welcome methods"</li>
-                        <li><strong>Core Value:</strong> Freedom, adventure over sightseeing, authentic group experiences</li>
+                        <li class="motivation">"Feels no restriction and freedom"</li>
+                        <li class="motivation">"I want to escape from my routine life"</li>
+                        <li class="motivation">"Spending time with buddies"</li>
+                        <li class="motivation">"Had good fun. We covered lots of traveler spots"</li>
+                        <li class="motivation">"The nature we liked the most"</li>
+                        <li class="motivation">"Spending quality and fun time with my friends was the best part"</li>
                     </ul>
                 </div>
                 
                 <div class="card">
-                    <h3>👨‍👩‍👧‍👦 Family Group Motivations</h3>
+                    <h3>💭 What Motivates People to Plan More</h3>
                     <ul class="insight-list">
-                        <li><strong>Shared Exploration:</strong> "The most liked thing was exploring new places and the fun we had during that time"</li>
-                        <li><strong>Quality Stays:</strong> "The place where we choose to stay (resort/Air BnB) is most liked"</li>
-                        <li><strong>Togetherness:</strong> "Liked time together moments and disliked flight delays"</li>
-                        <li><strong>Memory Creation:</strong> "Like: Traveling in car and bike. Enjoying visiting new places. Saving memories"</li>
-                        <li><strong>Core Values:</strong> Safety, comfort, quality accommodations, creating lasting family memories</li>
+                        <li class="motivation">"I want to escape from my routine life"</li>
+                        <li class="motivation">"Excitement about the location"</li>
+                        <li class="motivation">"Feel of exploration"</li>
+                        <li class="motivation">"If the place is really exciting and is in one of my dream destinations, I would do everything to make the trip happen"</li>
+                        <li class="motivation">"Just the excitement of going on a trip with my friends"</li>
+                        <li class="motivation">"Meeting after long time, fun"</li>
                     </ul>
                 </div>
                 
                 <div class="card">
-                    <h3>🏃‍♂️🏃‍♀️ Solo Travel Motivations</h3>
+                    <h3>🌟 What Makes Travel Perfect for Them</h3>
                     <ul class="insight-list">
-                        <li><strong>Male Solo:</strong> "Most liked going and exploring tourist places and dislike is we didn't planned properly"</li>
-                        <li><strong>Female Solo:</strong> "I saw many aquatic animals like a golden fish, a big sea turtle, a jellyfish, and a goldish red crab. I loved collecting shells"</li>
-                        <li><strong>Independence:</strong> Self-reliance and personal discovery</li>
-                        <li><strong>Environmental Consciousness:</strong> "Disliked plastic garbage thrown most places"</li>
-                        <li><strong>Core Values:</strong> Freedom, detailed planning, nature connection, environmental awareness</li>
+                        <li class="motivation">"Good food, climate and gatherings"</li>
+                        <li class="motivation">"Fun with the group during the trip"</li>
+                        <li class="motivation">"Feels no restriction and freedom"</li>
+                        <li class="motivation">"Healthy and jovial environment, peace of mind"</li>
+                        <li class="motivation">"Safety information, Hygiene and no restriction"</li>
                     </ul>
                 </div>
                 
                 <div class="card">
-                    <h3>🎯 Motivation Patterns by Trip Type</h3>
-                    <div class="chart-container">
-                        <canvas id="motivationChart"></canvas>
-                    </div>
-                    <div style="margin-top: 15px; padding: 15px; background: #f0f8ff; border-radius: 8px;">
-                        <strong>Key Pattern:</strong> Nature dominates all segments, Adventure higher in Bachelors groups
-                    </div>
+                    <h3>🔍 Key Decision Factors from Survey</h3>
+                    <ul class="insight-list">
+                        <li class="motivation"><strong>Climate:</strong> Weather is a primary concern</li>
+                        <li class="motivation"><strong>Freedom:</strong> "No restriction and freedom"</li>
+                        <li class="motivation"><strong>Safety:</strong> "Safety information" mentioned multiple times</li>
+                        <li class="motivation"><strong>Escape:</strong> "I want to escape from my routine life"</li>
+                        <li class="motivation"><strong>Social Connection:</strong> "Meeting after long time, fun"</li>
+                    </ul>
                 </div>
             </div>
             
             <div class="quote-card">
                 <div class="quote-text">
-                    Journey in train most memorable (Bachelors) vs The place where we choose to stay is most liked (Family)
+                    "I want to escape from my routine life"
                 </div>
-                <div class="quote-author">- Contrasting Segment Priorities</div>
+                <div class="quote-author">- Anonymous Survey Respondent</div>
+            </div>
+            
+            <div class="quote-card">
+                <div class="quote-text">
+                    "If the place is really exciting and is in one of my dream destinations, I would do everything to make the trip happen"
+                </div>
+                <div class="quote-author">- Anonymous Survey Respondent</div>
             </div>
         </div>
 
-        <!-- TAB 3: PAIN POINTS -->
-        <div id="pain-points" class="tab-content">
+        <div id="hypothesis" class="tab-content">
             <div class="dashboard-grid">
                 <div class="card">
-                    <h3>😤 Top Planning Frustrations</h3>
+                    <h3>🔍 Hypothesis 1: Do organizers feel overwhelmed during planning?</h3>
+                    <div class="chart-container">
+                        <canvas id="overwhelmedChart"></canvas>
+                    </div>
                     <ul class="insight-list">
-                        <li class="pain-point"><strong>Coordination (35%):</strong> "Getting everyone together", "Lack of co-operation or delay in response"</li>
-                        <li class="pain-point"><strong>Food Challenges (24%):</strong> "Finding vegetarian food", "Food availability for vegetarians is a big disaster"</li>
-                        <li class="pain-point"><strong>Communication (22%):</strong> "Don't get response on time", "Sometimes no one responds"</li>
-                        <li class="pain-point"><strong>Budget Issues (15%):</strong> "Price difference", "Adjusting budget"</li>
+                        <li class="hypothesis"><strong>RESULT: 27% feel overwhelmed during planning</strong></li>
+                        <li class="hypothesis">"Sometimes no one responds since they might be busy/lazy to check and respond for messages."</li>
+                        <li class="hypothesis">"Getting everyone together"</li>
+                        <li class="hypothesis">"When there is a deviation than the actual itinerary."</li>
                     </ul>
                 </div>
                 
                 <div class="card">
-                    <h3>🌿 Nature Travelers Pain Points</h3>
+                    <h3>🔍 Hypothesis 2: Do organizers enjoy the trip like others?</h3>
+                    <div class="chart-container">
+                        <canvas id="organizerEnjoyChart"></canvas>
+                    </div>
                     <ul class="insight-list">
-                        <li class="pain-point"><strong>Reality Gap:</strong> "Sometimes when what you see via pic and actual reality about tourist places are different, it upsets"</li>
-                        <li class="pain-point"><strong>Weather Issues:</strong> "Also the climate mostly frustrates us not to enjoy the fullest"</li>
-                        <li class="pain-point"><strong>Itinerary Deviations:</strong> "When there is a deviation than the actual itinerary"</li>
-                        <li class="pain-point"><strong>Rain Disruption:</strong> "I disliked when it started raining and one of the places didn't match our expectation"</li>
+                        <li class="hypothesis">"Yes, as his main focus is only travelling."</li>
+                        <li class="hypothesis">"He didn't enjoy as much as others because he has responsibilities for taking care of all accommodations."</li>
+                        <li class="hypothesis">"Probably not as they may be busy in execution rather than living in the moments"</li>
+                        <li class="hypothesis">"Yes, the person who initiates the travel is already a travel lover. So definitely he will enjoy more than others"</li>
                     </ul>
                 </div>
                 
                 <div class="card">
-                    <h3>🏖️ Leisure Travelers Pain Points</h3>
+                    <h3>🔍 Hypothesis 3: Are people left out during planning?</h3>
+                    <div class="chart-container">
+                        <canvas id="leftOutChart"></canvas>
+                    </div>
                     <ul class="insight-list">
-                        <li class="pain-point"><strong>Crowd Issues:</strong> "Long queue to reach final destination. Long queue for getting tokens for foods. Huge crowd"</li>
-                        <li class="pain-point"><strong>Crowded Areas:</strong> "Too much of journey and in too much of crowdy area to wait for our turns to get the chance"</li>
-                        <li class="pain-point"><strong>Traffic Delays:</strong> "Travel time was most irritating, all because of traffic"</li>
-                        <li class="pain-point"><strong>Time Constraints:</strong> "The dislike was not adequate time"</li>
-                    </ul>
-                </div>
-                
-                <div class="card">
-                    <h3>🏔️ Adventure Travelers Pain Points</h3>
-                    <ul class="insight-list">
-                        <li class="pain-point"><strong>Poor Planning:</strong> "Most liked going and exploring tourist places and dislike is we didn't planned properly"</li>
-                        <li class="pain-point"><strong>Unmet Expectations:</strong> "When place doesn't meet my Expectation"</li>
-                        <li class="pain-point"><strong>Vendor Issues:</strong> "Lack of responses from travel companies"</li>
-                        <li class="pain-point"><strong>Remote Access:</strong> Food and dinner quality issues in remote mountain areas</li>
-                    </ul>
-                </div>
-                
-                <div class="card">
-                    <h3>💰 Expense Settlement Conflicts</h3>
-                    <ul class="insight-list">
-                        <li class="pain-point"><strong>Splitwise Users Still Face Issues:</strong> "We use Splitwise and convert to Excel to double check"</li>
-                        <li class="pain-point"><strong>Settlement Timing:</strong> "One friend was not happy that we didn't settle the money then and there and had to pay a big amount later"</li>
-                        <li class="pain-point"><strong>Cash vs Digital:</strong> "A friend was always settling in cash as he was in business and it was difficult for others to transfer back to bank account"</li>
-                        <li class="pain-point"><strong>Trust Issues:</strong> Need for verification - "convert to Excel to double check"</li>
-                    </ul>
-                </div>
-                
-                <div class="card">
-                    <h3>📱 Communication & Coordination Pain Points</h3>
-                    <ul class="insight-list">
-                        <li class="pain-point"><strong>WhatsApp Issues:</strong> "Getting everyone to respond", "Sometimes no one responds since they might be busy/lazy"</li>
-                        <li class="pain-point"><strong>Schedule Conflicts:</strong> "Coordinating multiple people's schedule", "Matching the dates"</li>
-                        <li class="pain-point"><strong>Decision Making:</strong> "Making all of them to come on one single option by explaining very clearly to each"</li>
-                        <li class="pain-point"><strong>Group Dynamics:</strong> "Different people have Different tastes. All need to compromise"</li>
+                        <li class="hypothesis"><strong>RESULT: 27% have felt left out</strong></li>
+                        <li class="hypothesis">"My plan was not included and the reason given was not satisfactory."</li>
+                        <li class="hypothesis">"Sometimes if not included and everything is decided i feel happy that everything is taken care and i need just to enjoy my trip during planning"</li>
                     </ul>
                 </div>
             </div>
         </div>
 
-        <!-- TAB 4: SEGMENTATION -->
+        <div id="painpoints" class="tab-content">
+            <div class="dashboard-grid">
+                <div class="card">
+                    <h3>😤 Actual Planning Frustrations from Survey</h3>
+                    <ul class="insight-list">
+                        <li class="pain-point">"When there is a deviation than the actual itinerary"</li>
+                        <li class="pain-point">"Traffic and lengthy travel time"</li>
+                        <li class="pain-point">"Getting everyone together"</li>
+                        <li class="pain-point">"Lack of co-operation or delay in response by the group"</li>
+                        <li class="pain-point">"Finding vegetarian food"</li>
+                        <li class="pain-point">"Food availability for vegetarians is a big disaster"</li>
+                        <li class="pain-point">"Should be under affordable by all set of friends"</li>
+                        <li class="pain-point">"Few people have travel sickness and few not gel with new friends"</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h3>😔 Left Out Experiences</h3>
+                    <div class="chart-container">
+                        <canvas id="leftOutExperienceChart"></canvas>
+                    </div>
+                    <p style="margin-top: 15px; font-size: 0.9rem; color: #666;">
+                        Actual reasons people felt left out:
+                    </p>
+                    <ul class="insight-list">
+                        <li class="pain-point">"My plan was not included and the reason given was not satisfactory"</li>
+                        <li class="pain-point">"Sometimes no one responds since they might be busy/lazy to check messages"</li>
+                        <li class="pain-point">"Sometimes if not included and everything is decided I feel happy that everything is taken care"</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h3>🏔️ Remote Location Challenges</h3>
+                    <ul class="insight-list">
+                        <li class="pain-point">"Hotels were very remote with literally no shops or other buildings around"</li>
+                        <li class="pain-point">"When we go to some remote nature side places" - food/place choices don't work out</li>
+                        <li class="pain-point">"Location of stay was like remote place and surroundings was not pleasant"</li>
+                        <li class="pain-point">"Knowing exact itinerary with breaks especially with washrooms in remote places"</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="quote-card">
+                <div class="quote-text">
+                    "Food availability for vegetarians is a big disaster."
+                </div>
+                <div class="quote-author">- Anonymous Survey Respondent</div>
+            </div>
+        </div>
+
+        <div id="behaviors" class="tab-content">
+            <div class="dashboard-grid">
+                <div class="card">
+                    <h3>💬 Communication Tools Usage</h3>
+                    <div class="chart-container">
+                        <canvas id="communicationChart"></canvas>
+                    </div>
+                    <ul class="insight-list">
+                        <li><strong>WhatsApp Dominance:</strong> 70% use WhatsApp for trip coordination</li>
+                        <li><strong>Voice Communication:</strong> 19% still rely on phone calls</li>
+                        <li><strong>Documentation:</strong> Only 5% use Google Docs for planning</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h3>💰 Expense Management Tools</h3>
+                    <div class="chart-container">
+                        <canvas id="expenseChart"></canvas>
+                    </div>
+                    <ul class="insight-list">
+                        <li><strong>Splitwise Usage:</strong> "It's so easy with Splitwise app"</li>
+                        <li><strong>Manual Methods:</strong> "Post trip someone calculated and share it"</li>
+                        <li><strong>Pre-planning:</strong> "Pre alignment to share expenses per head"</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h3>🎯 How People Actually Choose Places</h3>
+                    <ul class="insight-list">
+                        <li><strong>Google Reviews:</strong> "We check for famous cuisines for that city/place and decide on a restaurant based on Google reviews"</li>
+                        <li><strong>Previous Travelers:</strong> "Reviews posted by already travelled people"</li>
+                        <li><strong>Reference Based:</strong> "Stay and food based on reference"</li>
+                        <li><strong>Multiple Sources:</strong> "We google and check nearby stay via reviews. Visit reliable apps like AirBNB, Booking.com etc and compare prices"</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h3>📱 Digital vs Non-Digital Reality</h3>
+                    <ul class="insight-list">
+                        <li><strong>WhatsApp Dependency:</strong> Primary tool but causes information scatter</li>
+                        <li><strong>Review Reliance:</strong> Heavy dependence on Google reviews and travel apps</li>
+                        <li><strong>Mixed Approaches:</strong> Combination of apps, word-of-mouth, and online research</li>
+                        <li><strong>Price Comparison:</strong> Active comparison across multiple booking platforms</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
         <div id="segmentation" class="tab-content">
+            <div class="segment-card">
+                <div class="segment-title">👨‍🎓 Bachelor Men - Core Needs Analysis</div>
+                <div class="feedback-item"><strong>Cost Control:</strong> Need upfront trip cost estimation and budget management tools</div>
+                <div class="feedback-item"><strong>Efficient Coordination:</strong> Require structured platforms to collect and organize group preferences</div>
+                <div class="feedback-item"><strong>Detailed Planning:</strong> Want comprehensive itineraries with logistics (timing, contacts, guides)</div>
+                <div class="feedback-item"><strong>Coordination Fatigue:</strong> Find group coordination exhausting - need automation</div>
+            </div>
+            
+            <div class="segment-card">
+                <div class="segment-title">👩‍🎓 Bachelor Women - Core Needs Analysis</div>
+                <div class="feedback-item"><strong>Safety Assurance:</strong> Require safety information and risk assessment for destinations</div>
+                <div class="feedback-item"><strong>Weather Reliability:</strong> Need accurate climate information to avoid trip disappointments</div>
+                <div class="feedback-item"><strong>Inclusive Planning:</strong> Want their input valued and incorporated in group decisions</div>
+                <div class="feedback-item"><strong>Response Management:</strong> Need better communication systems to ensure participation</div>
+                <div class="feedback-item"><strong>Remote Location Concerns:</strong> "Hotels were very remote with literally no shops or other buildings around" - need better location information</div>
+            </div>
+            
+            <div class="segment-card">
+                <div class="segment-title">👨‍👩‍👧‍👦 Family Groups - Core Needs Analysis</div>
+                <div class="feedback-item"><strong>Expert Guidance:</strong> Require experienced agents/guides with local knowledge</div>
+                <div class="feedback-item"><strong>Cultural Enrichment:</strong> Want authentic local cultural experiences and learning</div>
+                <div class="feedback-item"><strong>Schedule Coordination:</strong> Need tools to align multiple family members' availability</div>
+                <div class="feedback-item"><strong>Comprehensive Planning:</strong> Want end-to-end solutions with multiple options</div>
+            </div>
+            
+            <div class="segment-card">
+                <div class="segment-title">🧳 Solo Travelers - Core Needs Analysis</div>
+                <div class="feedback-item"><strong>Research Tools:</strong> Need comprehensive trip information and preparation resources</div>
+                <div class="feedback-item"><strong>Transport Preferences:</strong> Want flexibility in choosing preferred travel modes</div>
+                <div class="feedback-item"><strong>Independence:</strong> Prefer self-directed planning with minimal dependencies</div>
+                <div class="feedback-item"><strong>Information Access:</strong> Need clear instructions and guidance to avoid confusion</div>
+            </div>
+            
+            <h3 style="color: white; margin: 30px 0 20px 0; text-align: center;">🎯 Trip Type Needs Analysis</h3>
+            
             <div class="dashboard-grid">
                 <div class="card">
-                    <h3>👥 Bachelors Group Travel Overview (32% - 12 respondents)</h3>
-                    <div class="chart-container">
-                        <canvas id="bachelorsOverviewChart"></canvas>
-                    </div>
-                    <div style="margin-top: 15px; padding: 15px; background: #ffe8e8; border-radius: 8px;">
-                        <strong>Breakdown:</strong> ~58% Male, ~42% Female with distinct travel priorities and challenges
-                    </div>
-                </div>
-                
-                <div class="card">
-                    <h3>👨 Bachelors Group - Men Insights</h3>
+                    <h3>🏔️ Nature Trips - Weather & Reality Gap</h3>
                     <ul class="insight-list">
-                        <li><strong>Transport Focus:</strong> "Journey in train most memorable"</li>
-                        <li><strong>Buddy Bonding:</strong> "Spending time with buddies"</li>
-                        <li><strong>Food Challenges:</strong> "Food availability for vegetarians is a big disaster"</li>
-                        <li><strong>Local Experience:</strong> "We like the places we visited"</li>
-                        <li><strong>Budget Conscious:</strong> More price-sensitive than family groups</li>
-                        <li><strong>Coordination Issues:</strong> "Making all of them to come on one single option by explaining very clearly"</li>
+                        <li class="opportunity"><strong>Climate Reliability:</strong> Need accurate weather forecasting and backup planning</li>
+                        <li class="opportunity"><strong>Expectation Management:</strong> Require realistic destination previews vs marketing photos</li>
+                        <li class="opportunity"><strong>Seasonal Planning:</strong> Want optimal timing recommendations for weather conditions</li>
                     </ul>
                 </div>
                 
                 <div class="card">
-                    <h3>👩 Bachelors Group - Women Insights</h3>
+                    <h3>⛰️ Adventure Trips - Safety & Expert Support</h3>
                     <ul class="insight-list">
-                        <li><strong>Adventure Focus:</strong> "We are a gang of people who like trekking/hiking instead of just visiting sight seeing places"</li>
-                        <li><strong>Safety Concerns:</strong> "Since we were group of 6 girls, some of the hotels the travel company booked for us were very remote with literally no shops or other buildings around"</li>
-                        <li><strong>Activity Preference:</strong> Active outdoor activities over traditional sightseeing</li>
-                        <li><strong>Accommodation Issues:</strong> Remote locations lacking basic amenities and safety</li>
-                        <li><strong>Group Planning:</strong> "Different people like different kinds of activities for example some might be into temples while some might be into wildlife parks"</li>
+                        <li class="opportunity"><strong>Activity Safety:</strong> Need risk assessment and safety protocols for adventure sports</li>
+                        <li class="opportunity"><strong>Expert Guidance:</strong> Require experienced guides for activity planning and execution</li>
+                        <li class="opportunity"><strong>Equipment Planning:</strong> Want guidance on necessary gear and preparation</li>
                     </ul>
                 </div>
                 
                 <div class="card">
-                    <h3>👨‍👩‍👧‍👦 Family Travelers Insights (46% - 17 respondents)</h3>
+                    <h3>🏛️ Cultural Trips - Local Expertise & Learning</h3>
                     <ul class="insight-list">
-                        <li><strong>Shared Discovery:</strong> "The most liked thing in my last trip with my friends was exploring new places with them and the fun that we had during that time"</li>
-                        <li><strong>Accommodation Priority:</strong> "The place where we choose is stay(resort/Air BnB) is most liked"</li>
-                        <li><strong>Quality Time:</strong> "Liked time together moments and disliked flight delays"</li>
-                        <li><strong>Memory Making:</strong> "Like: Traveling in car and bike. Enjoying visiting new places. Saving memories"</li>
-                        <li><strong>Comfort Focus:</strong> Safety, hygiene, quality accommodations take priority</li>
-                        <li><strong>Logistics Concerns:</strong> "Checkin time. You mostly don't reach by checking time. Some provision must be there to make it flexible"</li>
+                        <li class="opportunity"><strong>Cultural Immersion:</strong> Need authentic local experiences beyond tourist attractions</li>
+                        <li class="opportunity"><strong>Local Guides:</strong> Require knowledgeable guides with cultural insights</li>
+                        <li class="opportunity"><strong>Educational Value:</strong> Want learning opportunities about history and traditions</li>
                     </ul>
-                </div>
-                
-                <div class="card">
-                    <h3>🏃‍♂️🏃‍♀️ Solo Travel Insights (5% - 2 respondents)</h3>
-                    <ul class="insight-list">
-                        <li><strong>Male Solo:</strong> "Most liked was going and exploring the tourist places and dislike is we didn't planned properly"</li>
-                        <li><strong>Female Solo:</strong> "I liked the hotel we haulted in, the beaches of Kokan regions were clean, beautiful and i saw many aquatic animals"</li>
-                        <li><strong>Planning Precision:</strong> High importance on detailed planning to avoid disappointments</li>
-                        <li><strong>Environmental Awareness:</strong> "I disliked that there were very less shells as love collecting shells and the sea shore was quite dirty with garbage and plastic thrown most places"</li>
-                        <li><strong>Independence Priority:</strong> Self-reliance and personal discovery over group consensus</li>
-                    </ul>
-                </div>
-                
-                <div class="card">
-                    <h3>📊 Segment Comparison Analysis</h3>
-                    <div class="chart-container">
-                        <canvas id="segmentComparisonChart"></canvas>
-                    </div>
-                    <div style="margin-top: 15px; padding: 15px; background: #f0f8ff; border-radius: 8px;">
-                        <strong>Key Differences:</strong> Bachelors focus on adventure/bonding, Families on comfort/memories, Solo on independence/precision
-                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- TAB 5: OPPORTUNITIES -->
         <div id="opportunities" class="tab-content">
             <div class="dashboard-grid">
                 <div class="card">
-                    <h3>📈 Adoption Willingness</h3>
-                    <div style="margin-bottom: 15px; padding: 15px; background: #e8f5e8; border-radius: 8px;">
-                        <strong>High Adoption Potential:</strong> 81% show willingness (49% definite + 32% conditional)
+                    <h3>🔧 Expectations & Factors That Convince Tool Usage</h3>
+                    <ul class="insight-list">
+                        <li class="opportunity"><strong>Reliability:</strong> "App should be reliable, Economical, and User Friendly"</li>
+                        <li class="opportunity"><strong>Comprehensive Solutions:</strong> "One place to give all suggestions on Place, Mode of transport, food, sight seeing places etc"</li>
+                        <li class="opportunity"><strong>Cost Transparency:</strong> "A tool which can roughly estimate the entire trip cost, suggest best flights and best places"</li>
+                        <li class="opportunity"><strong>Group Coordination:</strong> "A platform where some boards are there, everyone can share their choices"</li>
+                        <li class="opportunity"><strong>Integration:</strong> "Easy expense splitting and payments. Better integration with booking sites (flights, hotels). Both in a single place"</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h3>📈 Tool Adoption Willingness</h3>
+                    <div class="chart-container">
+                        <canvas id="adoptionChart"></canvas>
                     </div>
+                </div>
+                
+                <div class="card">
+                    <h3>🌤️ Weather & Real-time Information Needs</h3>
                     <ul class="insight-list">
-                        <li><strong>49% Definitely Yes:</strong> Ready to adopt immediately</li>
-                        <li><strong>32% Conditional:</strong> Will adopt if cost-effective and reliable</li>
-                        <li><strong>Key Success Factors:</strong> Cost-effectiveness, reliability, ease of use, integration with existing tools</li>
+                        <li class="opportunity"><strong>Weather Pain Point:</strong> "Climate mostly frustrates us not to enjoy the fullest"</li>
+                        <li class="opportunity"><strong>Reality vs Expectation:</strong> "Sometimes what you see via pic and actual reality about tourist places are different"</li>
+                        <li class="opportunity"><strong>Climate Priority:</strong> "Climate" consistently mentioned as key factor</li>
+                        <li class="opportunity"><strong>Real-time Updates:</strong> Need for accurate, current information about destinations</li>
                     </ul>
                 </div>
                 
                 <div class="card">
-                    <h3>🛠️ Expectations of Tool Adoption/Tool Reliance</h3>
+                    <h3>👨‍🏫 Guide & Agent Services Demand</h3>
                     <ul class="insight-list">
-                        <li class="opportunity"><strong>Comprehensive Solution:</strong> "An app which already provides customized plan for a trip depending on number of days, nature of trip [adventure, leisure, nature, etc.], number of people and location to stay"</li>
-                        <li class="opportunity"><strong>Cost Consciousness:</strong> "A great offer. But then price also matters. Since there are apps like make my trip and others who provide packages, but the price is too high when we ourselves book travel and stay"</li>
-                        <li class="opportunity"><strong>Expert Guidance:</strong> "Clear detailed activity plan with date, time, contact person, guides etc"</li>
-                        <li class="opportunity"><strong>All-in-One Platform:</strong> "A tool which can roughly estimate the entire trip cost, suggest best flights and best places"</li>
-                    </ul>
-                </div>
-                
-                <div class="card">
-                    <h3>🌤️ Weather Integration Opportunity - VALIDATED</h3>
-                    <div style="margin-bottom: 15px; padding: 15px; background: #fff3cd; border-radius: 8px;">
-                        <strong>Strong Need:</strong> Multiple weather-related pain points identified in survey
-                    </div>
-                    <ul class="insight-list">
-                        <li class="pain-point"><strong>Real Voice:</strong> "Also the climate mostly frustrates us not to enjoy the fullest"</li>
-                        <li class="pain-point"><strong>Rain Disruption:</strong> "I disliked when it started raining and one of the places which we visited didn't match our expectation"</li>
-                        <li class="pain-point"><strong>Weather Unpredictability:</strong> "Yes, due to weather changes we cannot predict the food and places"</li>
-                        <li class="opportunity"><strong>Planning Factor:</strong> "The weather, if the places we are visiting are opened or not etc"</li>
-                        <li class="opportunity"><strong>Key Factors:</strong> "Climate", "Safety / Climate" - Weather is a major consideration</li>
-                        <li class="opportunity"><strong>MyRideMate Need:</strong> Real-time weather alerts, seasonal recommendations, activity adjustments based on weather</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <h3>💡 Better Planning Responses</h3>
-                    <ul class="insight-list">
-                        <li class="opportunity"><strong>Time & Convenience:</strong> "More time to plan and on a lighter note, post retirement it will be easy!!!"</li>
-                        <li class="opportunity"><strong>Detailed Itineraries:</strong> "An itinerary clearly stating what time we need to start and the number of hours it takes to reach a place so that we can plan visits accordingly"</li>
-                        <li class="opportunity"><strong>End-to-End Coverage:</strong> "If all end to end coverage is taken care with minimal expenses"</li>
-                        <li class="opportunity"><strong>One-Stop Solution:</strong> "Yes, it should be one place to give all suggestions on Place, Mode of transport, food, sight seeing places etc"</li>
-                    </ul>
-                </div>
-                
-                <div class="card">
-                    <h3>🎯 Perfect Trip Experience Responses</h3>
-                    <ul class="insight-list">
-                        <li class="opportunity"><strong>Hassle-Free:</strong> "Smooth planning, food and hotel turn out good, the tourist place lives upto its expectations, the trip should be comfortable"</li>
-                        <li class="opportunity"><strong>No Surprises:</strong> "No issues anywhere and always comfortable"</li>
-                        <li class="opportunity"><strong>Dream Fulfillment:</strong> "Good of dream comes true"</li>
-                        <li class="opportunity"><strong>Well-Planned Execution:</strong> "Well planned peaceful trip", "Everything goes according to plan with a hint of spontaneous activities"</li>
-                    </ul>
-                </div>
-                
-                <div class="card">
-                    <h3>🔧 Tool Improvement Responses</h3>
-                    <ul class="insight-list">
-                        <li class="opportunity"><strong>Cost Estimation:</strong> "A tool which can roughly estimate the entire trip cost, suggest best flights and best places"</li>
-                        <li class="opportunity"><strong>Easy Expense Splitting:</strong> "Easy expense splitting and payments. Better integration with booking sites (flights, hotels). Both in a single place"</li>
-                        <li class="opportunity"><strong>Reliability Focus:</strong> "App should be reliable, Economical, and User Friendly"</li>
-                        <li class="opportunity"><strong>Real-time Updates:</strong> "Taking feedback and providing relief then and there only"</li>
-                    </ul>
-                </div>
-                
-                <div class="card">
-                    <h3>💰 Digital Tool Integration Opportunities</h3>
-                    <ul class="insight-list">
-                        <li class="opportunity"><strong>WhatsApp Integration (73%):</strong> "WhatsApp Group", "WhatsApp and phone call", "WhatsApp and email"</li>
-                        <li class="opportunity"><strong>Splitwise Integration (24%):</strong> "We use Splitwise", "We use applications like Splitwise"</li>
-                        <li class="opportunity"><strong>Booking Platform Integration:</strong> "We google and check near by stay via reviews. Visit reliable apps like AirBNB, Booking.com etc"</li>
-                        <li class="opportunity"><strong>Review Aggregation:</strong> "Reviews posted by already travelled people", "Google reviews", "Based on blogs we decide itinerary"</li>
+                        <li class="opportunity"><strong>Local Expertise:</strong> "Guide in that local area"</li>
+                        <li class="opportunity"><strong>Experienced Agents:</strong> "Agent should have visited the place to guide better"</li>
+                        <li class="opportunity"><strong>Detailed Planning:</strong> "Clear detailed activity plan with date, time, contact person, guides etc"</li>
+                        <li class="opportunity"><strong>Cultural Knowledge:</strong> "Proper travelling sources and a tour guide so that we can explore and learn everything"</li>
                     </ul>
                 </div>
             </div>
+            
+            <div class="card">
+                <h3>🚀 MyRideMate Specific Opportunities</h3>
+                <ul class="insight-list">
+                    <li class="opportunity"><strong>Group Travel Focus:</strong> "Mostly the group coordination" - core pain point MyRideMate can solve</li>
+                    <li class="opportunity"><strong>Date Matching:</strong> "Tool to help match everyone's dates" - scheduling coordination</li>
+                    <li class="opportunity"><strong>Expense Management:</strong> "Splitwise for Money management" - integrate with existing tools</li>
+                    <li class="opportunity"><strong>Communication Hub:</strong> "A platform where some boards are there, everyone can share their choices"</li>
+                    <li class="opportunity"><strong>Cost Estimation:</strong> "Tool which can roughly estimate the entire trip cost" - budget planning</li>
+                    <li class="opportunity"><strong>Choice Sharing:</strong> Address "My plan was not included" by enabling better input collection</li>
+                    <li class="opportunity"><strong>Response Management:</strong> Solve "Sometimes no one responds" with notification systems</li>
+                </ul>
+            </div>
+            
+            <div class="quote-card">
+                <div class="quote-text">
+                    "A great offer. But then price also matters. Since there are apps like make my trip and others who provide packages, but the price is too high when we ourselves book travel and stay."
+                </div>
+                <div class="quote-author">- Cost Concern About Existing Travel Apps</div>
+            </div>
+            
+            <div class="quote-card">
+                <div class="quote-text">
+                    "An app which already provides customized plan for a trip depending on number of days, nature of trip [adventure, leisure, nature, etc.], number of people and location to stay."
+                </div>
+                <div class="quote-author">- Anonymous Survey Respondent</div>
+            </div>
         </div>
+    </div>
 
-        <script>
-            // Organizer Overwhelm Chart
-            const organizerCtx = document.getElementById('organizerChart').getContext('2d');
-            new Chart(organizerCtx, {
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.tab');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const targetTab = this.getAttribute('data-tab');
+                    
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    this.classList.add('active');
+                    document.getElementById(targetTab).classList.add('active');
+                });
+            });
+
+            // Initialize charts
+            initializeCharts();
+        });
+
+        function initializeCharts() {
+            // Age Distribution Chart
+            const ageCtx = document.getElementById('ageChart').getContext('2d');
+            new Chart(ageCtx, {
                 type: 'doughnut',
                 data: {
-                    labels: ['Organizers Enjoy Less (65%)', 'Organizers Enjoy Equally (24%)', 'Organizers Enjoy More (11%)'],
+                    labels: ['18-21', '22-25', '26-30', '31-35', '36+'],
                     datasets: [{
-                        data: [24, 9, 4],
-                        backgroundColor: ['#e74c3c', '#f39c12', '#2ecc71'],
+                        data: [6, 3, 2, 9, 17],
+                        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'],
                         borderWidth: 2,
                         borderColor: '#fff'
                     }]
@@ -448,87 +687,22 @@
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
-                    plugins: { legend: { position: 'bottom' } }
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
                 }
             });
 
-            // Left Out Chart
-            const leftOutCtx = document.getElementById('leftOutChart').getContext('2d');
-            new Chart(leftOutCtx, {
-                type: 'doughnut',
-                data: {
-                    labels: ['Never Felt Left Out (68%)', 'Felt Left Out (27%)', 'No Response (5%)'],
-                    datasets: [{
-                        data: [25, 10, 2],
-                        backgroundColor: ['#2ecc71', '#e74c3c', '#95a5a6'],
-                        borderWidth: 2,
-                        borderColor: '#fff'
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: { legend: { position: 'bottom' } }
-                }
-            });
-
-            // Self Initiation Chart
-            const selfInitiationCtx = document.getElementById('selfInitiationChart').getContext('2d');
-            new Chart(selfInitiationCtx, {
-                type: 'bar',
-                data: {
-                    labels: ['Self-Initiated', 'Friends/Group', 'Spouse/Partner', 'Others'],
-                    datasets: [{
-                        label: 'Trip Initiators',
-                        data: [15, 8, 6, 8],
-                        backgroundColor: ['#3498db', '#e74c3c', '#f39c12', '#95a5a6'],
-                        borderRadius: 8
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: { legend: { display: false } },
-                    scales: { y: { beginAtZero: true } }
-                }
-            });
-
-            // Motivation Chart
-            const motivationCtx = document.getElementById('motivationChart').getContext('2d');
-            new Chart(motivationCtx, {
-                type: 'bar',
-                data: {
-                    labels: ['Nature', 'Leisure', 'Adventure', 'Cultural'],
-                    datasets: [{
-                        label: 'Family',
-                        data: [12, 3, 1, 1],
-                        backgroundColor: '#27ae60'
-                    }, {
-                        label: 'Bachelors',
-                        data: [5, 4, 3, 0],
-                        backgroundColor: '#e74c3c'
-                    }, {
-                        label: 'Solo',
-                        data: [1, 0, 1, 0],
-                        backgroundColor: '#f39c12'
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: { legend: { position: 'bottom' } },
-                    scales: { y: { beginAtZero: true } }
-                }
-            });
-
-            // Bachelors Overview Chart
-            const bachelorsOverviewCtx = document.getElementById('bachelorsOverviewChart').getContext('2d');
-            new Chart(bachelorsOverviewCtx, {
+            // Gender Distribution Chart
+            const genderCtx = document.getElementById('genderChart').getContext('2d');
+            new Chart(genderCtx, {
                 type: 'pie',
                 data: {
-                    labels: ['Male Bachelors (~58%)', 'Female Bachelors (~42%)'],
+                    labels: ['Male', 'Female'],
                     datasets: [{
-                        data: [7, 5],
+                        data: [21, 16],
                         backgroundColor: ['#3498db', '#e74c3c'],
                         borderWidth: 2,
                         borderColor: '#fff'
@@ -537,54 +711,251 @@
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
-                    plugins: { legend: { position: 'bottom' } }
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
                 }
             });
 
-            // Segment Comparison Chart
-            const segmentComparisonCtx = document.getElementById('segmentComparisonChart').getContext('2d');
-            new Chart(segmentComparisonCtx, {
+            // Location Distribution Chart
+            const locationCtx = document.getElementById('locationChart').getContext('2d');
+            new Chart(locationCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Bangalore', 'Chennai', 'Coimbatore', 'Thane', 'Kolhapur', 'Vijayawada', 'Vishakhapattanam', 'Others'],
+                    datasets: [{
+                        label: 'Respondents',
+                        data: [16, 5, 4, 1, 3, 2, 1, 5],
+                        backgroundColor: ['#667eea', '#764ba2', '#f093fb', '#f5576c', '#36A2EB', '#FF6384', '#FFCE56', '#95a5a6'],
+                        borderRadius: 8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        },
+                        x: {
+                            ticks: {
+                                maxRotation: 45,
+                                minRotation: 45
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Trip Type Chart
+            const tripTypeCtx = document.getElementById('tripTypeChart').getContext('2d');
+            new Chart(tripTypeCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Nature', 'Leisure', 'Adventure', 'Cultural'],
+                    datasets: [{
+                        label: 'Preferences',
+                        data: [17, 11, 8, 1],
+                        backgroundColor: ['#2ecc71', '#3498db', '#e74c3c', '#f39c12'],
+                        borderRadius: 8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+
+            // Overwhelmed Chart
+            const overwhelmedCtx = document.getElementById('overwhelmedChart').getContext('2d');
+            new Chart(overwhelmedCtx, {
                 type: 'doughnut',
                 data: {
-                    labels: ['Family Group (46%)', 'Bachelors Group (32%)', 'Solo Travel (5%)', 'Undecided (17%)'],
+                    labels: ['Not Overwhelmed (73%)', 'Felt Overwhelmed (27%)'],
                     datasets: [{
-                        data: [17, 12, 2, 6],
-                        backgroundColor: ['#27ae60', '#e74c3c', '#f39c12', '#95a5a6'],
-                        borderWidth: 3,
+                        data: [27, 10],
+                        backgroundColor: ['#2ecc71', '#e74c3c'],
+                        borderWidth: 2,
                         borderColor: '#fff'
                     }]
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
-                    plugins: { legend: { position: 'bottom' } }
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
                 }
             });
 
-            // Tab functionality
-            function showTab(tabName) {
-                // Hide all tab contents
-                const tabContents = document.querySelectorAll('.tab-content');
-                tabContents.forEach(content => {
-                    content.classList.remove('active');
-                });
-                
-                // Remove active class from all tabs
-                const tabs = document.querySelectorAll('.tab');
-                tabs.forEach(tab => {
-                    tab.classList.remove('active');
-                });
-                
-                // Show selected tab content
-                const targetTab = document.getElementById(tabName);
-                if (targetTab) {
-                    targetTab.classList.add('active');
+            // Organizer Enjoy Chart
+            const organizerEnjoyCtx = document.getElementById('organizerEnjoyChart').getContext('2d');
+            new Chart(organizerEnjoyCtx, {
+                type: 'pie',
+                data: {
+                    labels: ['Enjoy Equally (74%)', 'Enjoy Less (19%)', 'Mixed (7%)'],
+                    datasets: [{
+                        data: [20, 5, 2],
+                        backgroundColor: ['#2ecc71', '#e74c3c', '#f39c12'],
+                        borderWidth: 2,
+                        borderColor: '#fff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
                 }
-                
-                // Add active class to clicked tab
-                event.target.classList.add('active');
-            }
-        </script>
-    </div>
+            });
+
+            // Left Out Chart
+            const leftOutCtx = document.getElementById('leftOutChart').getContext('2d');
+            new Chart(leftOutCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Never Felt Left Out (73%)', 'Felt Left Out (27%)'],
+                    datasets: [{
+                        data: [27, 10],
+                        backgroundColor: ['#2ecc71', '#e74c3c'],
+                        borderWidth: 2,
+                        borderColor: '#fff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+
+            // Left Out Experience Chart
+            const leftOutExperienceCtx = document.getElementById('leftOutExperienceChart').getContext('2d');
+            new Chart(leftOutExperienceCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Never Felt Left Out (73%)', 'Felt Left Out (27%)'],
+                    datasets: [{
+                        data: [27, 10],
+                        backgroundColor: ['#2ecc71', '#e74c3c'],
+                        borderWidth: 2,
+                        borderColor: '#fff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+
+            // Communication Chart
+            const commCtx = document.getElementById('communicationChart').getContext('2d');
+            new Chart(commCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['WhatsApp', 'Phone Calls', 'Google Docs', 'Email'],
+                    datasets: [{
+                        label: 'Usage Count',
+                        data: [26, 7, 2, 1],
+                        backgroundColor: '#667eea',
+                        borderRadius: 8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+
+            // Expense Management Chart
+            const expenseCtx = document.getElementById('expenseChart').getContext('2d');
+            new Chart(expenseCtx, {
+                type: 'pie',
+                data: {
+                    labels: ['Splitwise/Apps', 'Manual/Excel', 'One Person Pays'],
+                    datasets: [{
+                        data: [10, 3, 1],
+                        backgroundColor: ['#3498db', '#f39c12', '#e74c3c'],
+                        borderWidth: 2,
+                        borderColor: '#fff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+
+            // Adoption Willingness Chart
+            const adoptionCtx = document.getElementById('adoptionChart').getContext('2d');
+            new Chart(adoptionCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Definitely Yes', 'Maybe/Conditional', 'Unsure', 'No Response'],
+                    datasets: [{
+                        data: [18, 8, 6, 5],
+                        backgroundColor: ['#2ecc71', '#f39c12', '#e74c3c', '#95a5a6'],
+                        borderWidth: 2,
+                        borderColor: '#fff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+        }
+    </script>
 </body>
 </html>
