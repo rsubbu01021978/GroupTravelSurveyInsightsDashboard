@@ -255,6 +255,10 @@
                 <span class="stat-label">Prefer Bachelors (Friends/Relatives)</span>
             </div>
             <div class="stat-item">
+                <span class="stat-number">5%</span>
+                <span class="stat-label">Prefer Bachelor Solo Travel</span>
+            </div>
+            <div class="stat-item">
                 <span class="stat-number">32%</span>
                 <span class="stat-label">Felt Left Out/Overwhelmed</span>
             </div>
@@ -268,7 +272,7 @@
             <button class="tab active" data-tab="demographics">Demographics</button>
             <button class="tab" data-tab="painpoints">Pain Points</button>
             <button class="tab" data-tab="behaviors">Behaviors</button>
-            <button class="tab" data-tab="hypothesis">Hypothesis Testing</button>
+            <button class="tab" data-tab="hypothesis">Hypothesis Tested</button>
             <button class="tab" data-tab="segmentation">Segmentation</button>
             <button class="tab" data-tab="opportunities">Opportunities</button>
             <button class="tab" data-tab="unmet">Unmet Needs</button>
@@ -510,7 +514,7 @@
                     </div>
                     <ul class="insight-list">
                         <li class="hypothesis"><strong>Results:</strong> 64% say organizer enjoys equally, 20% say they enjoy less, 9% mixed/depends, 7% no response</li>
-                        <li class="hypothesis"><strong>Adjusted Analysis:</strong> Considering 50% weightage to mixed responses (4.5%), approximately <strong>25% of organizers enjoy the trip less</strong> than other group members</li>
+                        <li class="hypothesis"><strong>Analysis:</strong> Considering 50% weightage to mixed responses (4.5%), approximately <strong>25% of organizers enjoy the trip less</strong> than other group members</li>
                         <li class="pain-point"><strong>Organizer Stress Factors:</strong> "Too stressful", "Busy in execution rather than living in the moments"</li>
                         <li class="opportunity"><strong>Success Factors:</strong> "If duties are divided, no issues. Single person cannot manage all areas"</li>
                         <li class="hypothesis"><strong>Mixed Response Insights:</strong> "Depends on how well duties are divided" - suggests workload distribution impacts organizer enjoyment</li>
@@ -1065,7 +1069,7 @@
             new Chart(enjoymentCtx, {
                 type: 'pie',
                 data: {
-                    labels: ['Enjoys Equally (64%)', 'Enjoys Less (20%)', 'Mixed/Depends (9%)', 'No Response (7%)'],
+                    labels: ['Enjoys Equally (64%)', 'Enjoys Less (20%)', 'Mixed (No & Yes) (9%)', 'No Response (7%)'],
                     datasets: [{
                         data: [28, 9, 4, 3],
                         backgroundColor: ['#2ecc71', '#e74c3c', '#f39c12', '#95a5a6'],
