@@ -163,6 +163,10 @@
             transform: scale(1.05);
         }
         
+        .stat-item.critical {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+        }
+        
         .stat-number {
             font-size: 2.5rem;
             font-weight: bold;
@@ -258,9 +262,17 @@
                 <span class="stat-number">5%</span>
                 <span class="stat-label">Prefer Bachelor Solo Travel</span>
             </div>
-            <div class="stat-item">
+            <div class="stat-item critical">
+                <span class="stat-number">16%</span>
+                <span class="stat-label">Organizer Overwhelm</span>
+            </div>
+            <div class="stat-item critical">
+                <span class="stat-number">16%</span>
+                <span class="stat-label">Members Left Out</span>
+            </div>
+            <div class="stat-item critical">
                 <span class="stat-number">32%</span>
-                <span class="stat-label">Felt Left Out/Overwhelmed</span>
+                <span class="stat-label">Experience Group Travel Planning Problems</span>
             </div>
             <div class="stat-item">
                 <span class="stat-number">59%</span>
@@ -328,12 +340,12 @@
                 </div>
                 
                 <div class="card">
-                    <h3>😔 Feeling Left Out/Overwhelmed</h3>
+                    <h3>😔 Members Feeling Left Out (16%)</h3>
                     <div class="chart-container">
                         <canvas id="leftOutChart"></canvas>
                     </div>
                     <p style="margin-top: 15px; font-size: 0.9rem; color: #666;">
-                        32% of respondents have felt left out/overwhelmed during trip planning
+                        16% of respondents have felt left out during trip planning
                     </p>
                     <ul class="insight-list">
                         <li class="pain-point">Plans made without their input</li>
@@ -344,17 +356,7 @@
                 </div>
                 
                 <div class="card">
-                    <h3>💔 Emotional Impact - Direct Voices</h3>
-                    <div style="background: linear-gradient(90deg, #ffebee, #ffcdd2); padding: 15px; border-radius: 8px; margin-bottom: 15px;">
-                        <h4 style="color: #d32f2f; margin-bottom: 10px;">😞 Exclusion & Dismissal:</h4>
-                        <p style="font-style: italic; font-size: 0.9rem; margin: 5px 0;">
-                            "My plan was not included and the reason given was not satisfactory"
-                        </p>
-                        <p style="font-style: italic; font-size: 0.9rem; margin: 5px 0;">
-                            "They selected the place which I didn't like"
-                        </p>
-                    </div>
-                    
+                    <h3>😰 Organizer Overwhelm (16%)</h3>
                     <div style="background: linear-gradient(90deg, #fff3e0, #ffcc02); padding: 15px; border-radius: 8px; margin-bottom: 15px;">
                         <h4 style="color: #f57c00; margin-bottom: 10px;">😰 Organizer Burden:</h4>
                         <p style="font-style: italic; font-size: 0.9rem; margin: 5px 0;">
@@ -362,6 +364,26 @@
                         </p>
                         <p style="font-style: italic; font-size: 0.9rem; margin: 5px 0;">
                             "I have to look into everything and it drains energy"
+                        </p>
+                    </div>
+                    
+                    <ul class="insight-list">
+                        <li class="pain-point"><strong>16% of organizers feel overwhelmed</strong> during planning coordination</li>
+                        <li class="pain-point"><strong>Key burden factors:</strong> Managing all aspects alone, coordinating group responses</li>
+                        <li class="pain-point"><strong>Impact:</strong> Reduces organizer's trip enjoyment and satisfaction</li>
+                        <li class="opportunity"><strong>Solution need:</strong> Task distribution and automated coordination tools</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h3>💔 Combined Emotional Impact - Direct Voices</h3>
+                    <div style="background: linear-gradient(90deg, #ffebee, #ffcdd2); padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                        <h4 style="color: #d32f2f; margin-bottom: 10px;">😞 Member Exclusion & Dismissal:</h4>
+                        <p style="font-style: italic; font-size: 0.9rem; margin: 5px 0;">
+                            "My plan was not included and the reason given was not satisfactory"
+                        </p>
+                        <p style="font-style: italic; font-size: 0.9rem; margin: 5px 0;">
+                            "They selected the place which I didn't like"
                         </p>
                     </div>
                     
@@ -374,6 +396,11 @@
                             "Some weird moments will exist in every trip"
                         </p>
                     </div>
+                    
+                    <ul class="insight-list">
+                        <li class="pain-point"><strong>Total Impact:</strong> 32% experience negative emotions - 16% organizer overwhelm + 16% member exclusion</li>
+                        <li class="opportunity"><strong>Dual Solution Need:</strong> Tools must address both organizer burden AND inclusive decision-making</li>
+                    </ul>
                 </div>
             </div>
             
@@ -496,14 +523,16 @@
         <div id="hypothesis" class="tab-content">
             <div class="dashboard-grid">
                 <div class="card">
-                    <h3>🔬 Hypothesis: Organizer Overwhelm</h3>
+                    <h3>🔬 Hypothesis: Dual Planning Problems (32% Total)</h3>
                     <div class="chart-container">
                         <canvas id="organizerOverwhelmChart"></canvas>
                     </div>
                     <ul class="insight-list">
-                        <li class="hypothesis"><strong>32% felt left out/overwhelmed</strong> during planning coordination</li>
-                        <li class="hypothesis"><strong>Key triggers:</strong> Plans made without input, late communication, different preferences ignored</li>
-                        <li class="hypothesis"><strong>Impact:</strong> Reduces engagement and trip satisfaction</li>
+                        <li class="hypothesis"><strong>16% organizer overwhelm</strong> - Trip organizers feel burdened by coordination</li>
+                        <li class="hypothesis"><strong>16% member exclusion</strong> - Group members feel left out of decisions</li>
+                        <li class="hypothesis"><strong>Combined Impact:</strong> 32% experience negative emotions during planning</li>
+                        <li class="hypothesis"><strong>Key triggers:</strong> Solo coordination burden + plans made without input</li>
+                        <li class="hypothesis"><strong>Impact:</strong> Reduces both organizer and member engagement and trip satisfaction</li>
                     </ul>
                 </div>
                 
@@ -540,6 +569,7 @@
                         <li><strong>Decision Making:</strong> Google reviews + friend recommendations</li>
                         <li><strong>Pain Points:</strong> "Getting everyone together", "Multiple choices by multiple persons"</li>
                         <li><strong>Expense Management:</strong> Splitwise preferred, but cash handling creates friction</li>
+                        <li class="pain-point"><strong>Organizer Overwhelm:</strong> High likelihood of single-person coordination burden</li>
                     </ul>
                 </div>
                 
@@ -553,6 +583,7 @@
                         <li><strong>Decision Process:</strong> Board-based voting systems preferred</li>
                         <li class="pain-point"><strong>Critical Safety Feedback:</strong> "We are group of 6 girls, but we didn't find any shops around, felt not secure"</li>
                         <li class="opportunity"><strong>Infrastructure Needs:</strong> Real-time information about restrooms and refreshments in remote areas</li>
+                        <li class="opportunity"><strong>Inclusive Planning:</strong> Higher need for democratic decision-making to prevent exclusion</li>
                     </ul>
                 </div>
                 
@@ -564,6 +595,7 @@
                         <li><strong>Decision Factors:</strong> Crowd avoidance, flexible check-in times</li>
                         <li><strong>Frustrations:</strong> Long queues, vegetarian food availability</li>
                         <li><strong>Tool Interest:</strong> 75% interested in comprehensive planning tools</li>
+                        <li class="opportunity"><strong>Lower Overwhelm Risk:</strong> Family collaboration reduces single-person coordination burden</li>
                     </ul>
                 </div>
                 
@@ -575,6 +607,7 @@
                         <li><strong>Communication:</strong> Multi-channel (WhatsApp, calls, docs, face-to-face)</li>
                         <li><strong>Decision Making:</strong> Consensus-driven, detailed itinerary preference</li>
                         <li><strong>Value Factors:</strong> Memorable experiences, stress-free execution</li>
+                        <li class="opportunity"><strong>Democratic Approach:</strong> Natural inclination toward inclusive planning reduces member exclusion</li>
                     </ul>
                 </div>
             </div>
@@ -605,8 +638,7 @@
                         <li class="opportunity"><strong>Cost Estimation:</strong> "Tool which can roughly estimate the entire trip cost, suggest best flights and best places"</li>
                         <li class="opportunity"><strong>Real-time Coordination:</strong> "Tool to help match everyone's dates"</li>
                         <li class="opportunity"><strong>Expense Management:</strong> "Easy expense splitting and payments. Better integration with booking sites"</li>
-                        <li class="opportunity"><strong>Weather Integration During Selection:</strong> "Real-time weather forecasts integrated into place and date selection process - show 7-15 day forecasts when choosing destinations and travel dates"</li>
-                        <li class="opportunity"><strong>Season & Weather Intelligence:</strong> "Peak vs Non-peak season suggestions integrated with weather forecasting for Nature/Leisure trips - show optimal travel windows with cost implications, crowd levels, and weather patterns"</li>
+                        <li class="opportunity"><strong>Weather Integration During Selection:</strong> "Real-time weather forecasts integrated into place and date selection process"</li>
                         <li class="opportunity"><strong>Women's Safety & Infrastructure Guide:</strong> "Tool can guide information about restrooms availability/refreshments - it would be helpful for women travelers"</li>
                         <li class="opportunity"><strong>AI Planning Assistant:</strong> "Chatbot to guide through planning process and answer travel-related questions instantly"</li>
                     </ul>
@@ -645,33 +677,6 @@
                 </div>
                 
                 <div class="card">
-                    <h3>🤖 Tool Adoption Factors</h3>
-                    <p style="margin-bottom: 15px; color: #666; font-weight: bold;">
-                        Q: "What factors would convince you to rely on a tool for group travel planning?"
-                    </p>
-                    <ul class="insight-list">
-                        <li class="opportunity"><strong>Reliability & Accuracy:</strong> "If it provides accurate information and real-time updates"</li>
-                        <li class="opportunity"><strong>Comprehensive Coverage:</strong> "One platform for everything - booking, planning, coordination, payments"</li>
-                        <li class="opportunity"><strong>Time Efficiency:</strong> "Quick responses and automated planning to save time"</li>
-                        <li class="opportunity"><strong>Cost Optimization:</strong> "Better deals, price comparisons, and budget management features"</li>
-                        <li class="opportunity"><strong>Local Intelligence:</strong> "Insider knowledge about destinations, local recommendations"</li>
-                        <li class="opportunity"><strong>Group Coordination:</strong> "Easy way to get consensus from group members and manage different preferences"</li>
-                    </ul>
-                    
-                    <div style="background: linear-gradient(90deg, #e8f5e8, #c8e6c9); padding: 15px; border-radius: 8px; margin-top: 15px;">
-                        <h4 style="color: #2e7d32; margin-bottom: 10px;">🎯 Key Success Factors for Tool Adoption:</h4>
-                        <p style="font-style: italic; font-size: 0.9rem; margin: 5px 0;">
-                            <strong>Trust Building:</strong> "Must provide verified and reliable information, not just generic suggestions"
-                        </p>
-                        <p style="font-style: italic; font-size: 0.9rem; margin: 5px 0;">
-                            <strong>Personalization:</strong> "Should understand group dynamics, preferences, and budget constraints"
-                        </p>
-                        <p style="font-style: italic; font-size: 0.9rem; margin: 5px 0;">
-                            <strong>Human Touch:</strong> "Backup human support when tools can't handle complex scenarios"</p>
-                    </div>
-                </div>
-                
-                <div class="card">
                     <h3>🚀 What Would Make You Contribute More Actively to Trip Planning?</h3>
                     <ul class="insight-list">
                         <li class="opportunity"><strong>Excitement is the #1 driver</strong> - People contribute more when they're genuinely excited about the destination</li>
@@ -701,38 +706,6 @@
                         Tools should focus on building excitement, enabling easy collaboration, and ensuring everyone feels heard in the planning process.
                     </p>
                 </div>
-                
-                <div class="card">
-                    <h3>✨ Perfect Travel Experience Vision</h3>
-                    <p style="margin-bottom: 15px; color: #666; font-weight: bold;">
-                        Q: "What would a perfect travel experience look like to you — from the moment it's planned to when it ends?"
-                    </p>
-                    <ul class="insight-list">
-                        <li class="opportunity"><strong>Planning to Execution Flow</strong> - Seamless planning followed by flawless execution with detailed itineraries</li>
-                        <li class="opportunity"><strong>Balance of Structure & Flexibility</strong> - "Everything according to plan" but room for spontaneous activities</li>
-                        <li class="opportunity"><strong>Group Satisfaction Focus</strong> - Success measured by everyone being happy and budget adherence</li>
-                        <li class="hypothesis"><strong>Bachelor-Specific:</strong> "Fun with the group during trip, though planning and settlement was difficult"</li>
-                    </ul>
-                    
-                    <div style="background: linear-gradient(90deg, #e3f2fd, #bbdefb); padding: 15px; border-radius: 8px; margin-top: 15px;">
-                        <h4 style="color: #1976d2; margin-bottom: 10px;">🎙️ Best Customer Voices:</h4>
-                        <p style="font-style: italic; margin: 5px 0; font-size: 0.9rem;">
-                            <strong>Flexibility:</strong> "If the trip works out perfectly well and we do not face any issues, anyways it's okay if the trips goes a little south from the made plans but that's the real fun"
-                        </p>
-                        <p style="font-style: italic; margin: 5px 0; font-size: 0.9rem;">
-                            <strong>Practical Needs:</strong> "Knowing the exact itinerary with time to spend at each place and breaks in between especially with washrooms in remote places"
-                        </p>
-                        <p style="font-style: italic; margin: 5px 0; font-size: 0.9rem;">
-                            <strong>Clear Priorities:</strong> "Many places to explore with less crowd, Proper Food, Hygienic Hotels, Good travelling source, Everything under budget"
-                        </p>
-                        <p style="font-style: italic; margin: 5px 0; font-size: 0.9rem;">
-                            <strong>Perfect Experience:</strong> "Good food, climate and gatherings", "Healthy and jovial environment, peace of mind"
-                        </p>
-                        <p style="font-style: italic; margin: 5px 0; font-size: 0.9rem;">
-                            <strong>Dream Scenario:</strong> "If the place is really exciting and is in one of my dream destinations, I would do everything to make the trip happen"
-                        </p>
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -751,7 +724,7 @@
                 <div class="card">
                     <h3>📅 Peak vs Non-Peak Season Intelligence</h3>
                     <ul class="insight-list">
-                        <li class="pain-point"><strong>Current Gap:</strong> 55% choose Nature/Leisure trips without season optimization guidance</li>
+                        <li class="pain-point"><strong>Current Gap:</strong> 70% choose Nature/Leisure trips without season optimization guidance</li>
                         <li class="opportunity"><strong>Cost Impact:</strong> Peak season awareness can save 30-50% on accommodation and flights</li>
                         <li class="opportunity"><strong>Experience Quality:</strong> Non-peak travel offers better experiences with fewer crowds</li>
                     </ul>
@@ -763,10 +736,11 @@
                 <div class="card">
                     <h3>🔮 Hidden Coordination Needs</h3>
                     <ul class="insight-list">
-                        <li class="pain-point"><strong>Silent Frustrations:</strong> 32% felt overwhelmed but many don't voice concerns</li>
+                        <li class="pain-point"><strong>Silent Frustrations:</strong> 16% organizer overwhelm + 16% member exclusion = 32% negative planning experiences</li>
                         <li class="opportunity"><strong>Anonymous Voting:</strong> "Wish there was a way to vote anonymously on destinations"</li>
                         <li class="opportunity"><strong>Proactive Check-ins:</strong> System should detect when someone is disengaged</li>
                         <li class="opportunity"><strong>Conflict Resolution:</strong> Mediation tools for when group can't decide</li>
+                        <li class="opportunity"><strong>Organizer Support:</strong> Task delegation tools to prevent single-person overwhelm</li>
                     </ul>
                 </div>
                 
@@ -797,10 +771,10 @@
         </div>
 
         <div class="recommendations">
-            <h3>🎯 Updated Strategic Recommendations Based on 44 Responses</h3>
+            <h3>🎯 Updated Strategic Recommendations Based on Revised Data (44 Responses)</h3>
             
             <div class="rec-item priority-high">
-                <strong>CRITICAL PRIORITY:</strong> Address organizer overwhelm with task distribution features - 32% experience overwhelm, plus 27% of organizers enjoy less.
+                <strong>CRITICAL PRIORITY:</strong> Address dual planning problems - 16% organizer overwhelm + 16% member exclusion = 32% negative planning experiences. Build task distribution and inclusive decision-making features.
             </div>
             
             <div class="rec-item priority-high">
@@ -831,6 +805,25 @@
             initializeCharts();
             initializeTabs();
         });
+
+        function initializeTabs() {
+            const tabs = document.querySelectorAll('.tab');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const targetTab = this.getAttribute('data-tab');
+                    
+                    // Remove active class from all tabs and content
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tabContents.forEach(tc => tc.classList.remove('active'));
+                    
+                    // Add active class to clicked tab and corresponding content
+                    this.classList.add('active');
+                    document.getElementById(targetTab).classList.add('active');
+                });
+            });
+        }
 
         function initializeCharts() {
             // Age Distribution Chart
@@ -944,10 +937,10 @@
             new Chart(leftOutCtx, {
                 type: 'doughnut',
                 data: {
-                    labels: ['Felt Left Out/Overwhelmed', 'Never Felt Left Out', 'Neutral/No Response'],
+                    labels: ['Members Left Out (16%)', 'Organizers Overwhelmed (16%)', 'No Planning Issues (68%)'],
                     datasets: [{
-                        data: [14, 25, 5],
-                        backgroundColor: ['#e74c3c', '#2ecc71', '#95a5a6'],
+                        data: [7, 7, 30],
+                        backgroundColor: ['#e74c3c', '#f39c12', '#2ecc71'],
                         borderWidth: 2,
                         borderColor: '#fff'
                     }]
@@ -1045,10 +1038,10 @@
             new Chart(overwhelmCtx, {
                 type: 'doughnut',
                 data: {
-                    labels: ['Felt Overwhelmed/Left Out', 'Never Felt Overwhelmed', 'Neutral/Unclear'],
+                    labels: ['Organizer Overwhelm (16%)', 'Member Exclusion (16%)', 'No Planning Issues (68%)'],
                     datasets: [{
-                        data: [14, 25, 5],
-                        backgroundColor: ['#e74c3c', '#2ecc71', '#f39c12'],
+                        data: [7, 7, 30],
+                        backgroundColor: ['#f39c12', '#e74c3c', '#2ecc71'],
                         borderWidth: 2,
                         borderColor: '#fff'
                     }]
@@ -1144,25 +1137,6 @@
                     }
                 });
             }
-        }
-
-        function initializeTabs() {
-            const tabs = document.querySelectorAll('.tab');
-            const tabContents = document.querySelectorAll('.tab-content');
-
-            tabs.forEach(tab => {
-                tab.addEventListener('click', function() {
-                    const targetTab = this.getAttribute('data-tab');
-                    
-                    // Remove active class from all tabs and content
-                    tabs.forEach(t => t.classList.remove('active'));
-                    tabContents.forEach(tc => tc.classList.remove('active'));
-                    
-                    // Add active class to clicked tab and corresponding content
-                    this.classList.add('active');
-                    document.getElementById(targetTab).classList.add('active');
-                });
-            });
         }
     </script>
 </body>
