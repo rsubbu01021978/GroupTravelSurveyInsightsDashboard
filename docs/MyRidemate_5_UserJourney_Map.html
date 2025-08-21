@@ -24,6 +24,7 @@
             margin: 0 auto;
         }
         
+        /* Header */
         .header {
             background: rgba(255,255,255,0.95);
             border-radius: 20px;
@@ -67,6 +68,7 @@
             font-size: 0.9rem;
         }
         
+        /* Journey Map */
         .journey-map {
             background: white;
             border-radius: 15px;
@@ -75,6 +77,7 @@
             box-shadow: 0 15px 30px rgba(0,0,0,0.1);
         }
         
+        /* Persona Header */
         .persona-header {
             padding: 25px;
             color: white;
@@ -123,6 +126,7 @@
             font-size: 0.8rem;
         }
         
+        /* Journey Content */
         .journey-content {
             padding: 25px;
         }
@@ -146,6 +150,7 @@
             line-height: 1.5;
         }
         
+        /* Visual Touchpoint Journey */
         .touchpoint-journey {
             background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
             border-radius: 12px;
@@ -237,6 +242,7 @@
             100% { opacity: 1; }
         }
         
+        /* Journey Phases */
         .phases {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -308,18 +314,28 @@
         }
         
         .actions .section-label::before { background: #3b82f6; }
-        .support .section-label::before { background: #22c55e; }
-        .advocacy .section-label::before { background: #a855f7; }
-        .expectation-gaps .section-label::before { background: #ec4899; }
+        .emotions .section-label::before { background: #a855f7; }
+        .touchpoints .section-label::before { background: #22c55e; }
+        .pain-points .section-label::before { background: #ef4444; }
         
-        .expectation-gaps {
-            background: #fdf2f8;
-            border: 1px solid #fbb6ce;
-            border-radius: 8px;
-            padding: 12px;
-            margin-bottom: 12px;
+        .emotion-tag {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 10px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            margin-right: 4px;
+            margin-bottom: 3px;
         }
         
+        .frustrated { background: #fee2e2; color: #dc2626; }
+        .excited { background: #dcfce7; color: #16a34a; }
+        .confused { background: #fef3c7; color: #d97706; }
+        .satisfied { background: #dbeafe; color: #2563eb; }
+        .overwhelmed { background: #f3e8ff; color: #7c3aed; }
+        .confident { background: #d1fae5; color: #059669; }
+        
+        /* Solutions */
         .solutions {
             background: linear-gradient(135deg, #00b894 0%, #55efc4 100%);
             color: white;
@@ -351,6 +367,7 @@
             left: 0;
         }
         
+        /* Metrics */
         .metrics {
             background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
             color: white;
@@ -374,12 +391,6 @@
             background: rgba(255,255,255,0.1);
             padding: 10px;
             border-radius: 8px;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-        
-        .metric:hover {
-            transform: scale(1.05);
         }
         
         .metric-value {
@@ -393,12 +404,14 @@
             opacity: 0.9;
         }
         
+        /* Color Themes */
         .ai-native { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
         .chatbot-seeker { background: linear-gradient(135deg, #fd79a8 0%, #fdcb6e 100%); }
         .research-maximizer { background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%); }
         .platform-optimizer { background: linear-gradient(135deg, #00b894 0%, #55efc4 100%); }
         .structured-planner { background: linear-gradient(135deg, #e17055 0%, #fab1a0 100%); }
         
+        /* Summary */
         .summary {
             background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%);
             color: white;
@@ -459,6 +472,7 @@
             margin-bottom: 5px;
         }
         
+        /* Responsive */
         @media (max-width: 768px) {
             .stats {
                 grid-template-columns: repeat(2, 1fr);
@@ -498,6 +512,7 @@
 </head>
 <body>
     <div class="container">
+        <!-- Header -->
         <div class="header">
             <h1>🚗 MyRideMate: User Journey Maps</h1>
             <p style="font-size: 1.1rem; color: #4a5568;">
@@ -531,7 +546,7 @@
                 <div class="persona-info">
                     <h2>1. The AI-Native Expert</h2>
                     <div class="persona-details">
-                        Record #42 • 36+ years • Nashville USA • Male
+                        Record #42 • 36+ years • Indian • Male
                     </div>
                     <div class="persona-quote">
                         "Based on my Search via Google & AI Apps"
@@ -542,17 +557,24 @@
             
             <div class="journey-content">
                 <div class="scenario">
-                    <h3>🔍 Scenario</h3>
-                    <p>Currently holidaying, values safety for family, clean hotels, easy transportation access, and quality food & drinks. Frustrated by excessive tipping demands.</p>
+                    <h3>📍 Scenario</h3>
+                    <p>Planning family vacation leveraging existing AI tools but needs better integration and family-specific recommendations to avoid overwhelming coordination.</p>
                 </div>
                 
+                <!-- Visual Touchpoint Journey -->
                 <div class="touchpoint-journey">
-                    <div class="touchpoint-title">🔄 Current Touchpoint Journey</div>
+                    <div class="touchpoint-title">🔄 Current Touchpoint Journey (Start to End)</div>
                     <div class="touchpoint-flow">
                         <div class="touchpoint-item">
                             <span class="touchpoint-icon">🔍</span>
-                            <div class="touchpoint-name">AI Search</div>
+                            <div class="touchpoint-name">AI Search Apps</div>
                             <div class="touchpoint-emotion">Confident</div>
+                        </div>
+                        <div class="touchpoint-arrow">→</div>
+                        <div class="touchpoint-item">
+                            <span class="touchpoint-icon">📱</span>
+                            <div class="touchpoint-name">Google AI</div>
+                            <div class="touchpoint-emotion">Analytical</div>
                         </div>
                         <div class="touchpoint-arrow">→</div>
                         <div class="touchpoint-item">
@@ -572,55 +594,103 @@
                             <div class="touchpoint-name">Experience</div>
                             <div class="touchpoint-emotion">Delighted</div>
                         </div>
-                        <div class="touchpoint-arrow">→</div>
-                        <div class="touchpoint-item">
-                            <span class="touchpoint-icon">📞</span>
-                            <div class="touchpoint-name">Support</div>
-                            <div class="touchpoint-emotion">Reassured</div>
-                        </div>
-                        <div class="touchpoint-arrow">→</div>
-                        <div class="touchpoint-item">
-                            <span class="touchpoint-icon">🎯</span>
-                            <div class="touchpoint-name">Advocacy</div>
-                            <div class="touchpoint-emotion">Proud</div>
-                        </div>
                     </div>
                 </div>
                 
                 <div class="phases">
                     <div class="phase">
                         <div class="phase-header">
-                            <div class="phase-icon">📞</div>
-                            <div class="phase-name">Support</div>
+                            <div class="phase-icon">🔍</div>
+                            <div class="phase-name">Awareness</div>
                         </div>
-                        <div class="phase-section support">
-                            <div class="section-label">Support Needs</div>
-                            • Cost transparency: "Paying a lot of Tips for nothing" frustrates him<br>
-                            • Family safety assurance: Values "safe for my Family & Myself"<br>
-                            • Quality standards: Needs "Cleaner Hotels, Easy access to transportation"
+                        <div class="phase-section actions">
+                            <div class="section-label">Actions</div>
+                            Uses multiple AI apps, searches Google AI, cross-references suggestions with family preferences
                         </div>
-                        <div class="expectation-gaps">
-                            <div class="section-label">Expectation vs Reality</div>
-                            <strong>Expected:</strong> Fair pricing without excessive tips<br>
-                            <strong>Reality:</strong> "Paying a lot of Tips for nothing"
+                        <div class="phase-section emotions">
+                            <div class="section-label">Emotions</div>
+                            <span class="emotion-tag confident">😎 Confident</span>
+                            <span class="emotion-tag overwhelmed">🤔 Analytical</span>
+                        </div>
+                        <div class="phase-section touchpoints">
+                            <div class="section-label">Touchpoints</div>
+                            Google AI, Travel AI apps, Smart assistants, Review aggregators
+                        </div>
+                        <div class="phase-section pain-points">
+                            <div class="section-label">Pain Points</div>
+                            <strong>Organizer Overwhelm:</strong> Multiple AI sources, lacks family context, manual verification required
                         </div>
                     </div>
                     
                     <div class="phase">
                         <div class="phase-header">
                             <div class="phase-icon">🎯</div>
-                            <div class="phase-name">Advocacy</div>
+                            <div class="phase-name">Consideration</div>
                         </div>
-                        <div class="phase-section advocacy">
-                            <div class="section-label">Advocacy Behaviors</div>
-                            • Takes ownership approach to planning<br>
-                            • Relies heavily on ratings for decision-making: "Ratings - I trust them"<br>
-                            • Focuses on better planning for expense management
+                        <div class="phase-section actions">
+                            <div class="section-label">Actions</div>
+                            Evaluates AI options, filters by family needs, coordinates with family for input
                         </div>
-                        <div class="expectation-gaps">
-                            <div class="section-label">Expectation vs Reality</div>
-                            <strong>Expected:</strong> Balanced group interests and cost considerations<br>
-                            <strong>Reality:</strong> Challenges with "Cost, Common Interest of all parties and family members"
+                        <div class="phase-section emotions">
+                            <div class="section-label">Emotions</div>
+                            <span class="emotion-tag overwhelmed">😤 Overwhelmed</span>
+                            <span class="emotion-tag frustrated">😠 Frustrated</span>
+                        </div>
+                        <div class="phase-section touchpoints">
+                            <div class="section-label">Touchpoints</div>
+                            Family discussions, Booking platforms, Comparison sites, Group chats
+                        </div>
+                        <div class="phase-section pain-points">
+                            <div class="section-label">Pain Points</div>
+                            <strong>Members Left Out:</strong> Dominant decision-making, limited AI integration
+                        </div>
+                    </div>
+                    
+                    <div class="phase">
+                        <div class="phase-header">
+                            <div class="phase-icon">💳</div>
+                            <div class="phase-name">Purchase</div>
+                        </div>
+                        <div class="phase-section actions">
+                            <div class="section-label">Actions</div>
+                            Books family-appropriate options, manages payments, confirms arrangements
+                        </div>
+                        <div class="phase-section emotions">
+                            <div class="section-label">Emotions</div>
+                            <span class="emotion-tag satisfied">😌 Relieved</span>
+                            <span class="emotion-tag confident">😊 Accomplished</span>
+                        </div>
+                        <div class="phase-section touchpoints">
+                            <div class="section-label">Touchpoints</div>
+                            Booking confirmations, Payment systems, Family coordination, Calendar apps
+                        </div>
+                        <div class="phase-section pain-points">
+                            <div class="section-label">Pain Points</div>
+                            Multiple platform bookings, complex family coordination, trust verification needed
+                        </div>
+                    </div>
+                    
+                    <div class="phase">
+                        <div class="phase-header">
+                            <div class="phase-icon">✈️</div>
+                            <div class="phase-name">Experience</div>
+                        </div>
+                        <div class="phase-section actions">
+                            <div class="section-label">Actions</div>
+                            Enjoys AI-optimized experiences, uses real-time AI, shares feedback
+                        </div>
+                        <div class="phase-section emotions">
+                            <div class="section-label">Emotions</div>
+                            <span class="emotion-tag excited">😍 Delighted</span>
+                            <span class="emotion-tag satisfied">😊 Satisfied</span>
+                        </div>
+                        <div class="phase-section touchpoints">
+                            <div class="section-label">Touchpoints</div>
+                            Real-time AI apps, Local experiences, Family feedback, Photo sharing
+                        </div>
+                        <div class="phase-section pain-points">
+                            <div class="section-label">Pain Points</div>
+                            May miss local nuances, over-reliance on technology, family prefers spontaneity
                         </div>
                     </div>
                 </div>
@@ -628,10 +698,10 @@
                 <div class="solutions">
                     <h3>🚀 MyRideMate Value Opportunities</h3>
                     <ul>
-                        <li>Transparent pricing with no hidden tips or fees</li>
-                        <li>Family safety verification and quality assurance</li>
-                        <li>Rating-based recommendations with trust verification</li>
-                        <li>Balanced cost and interest optimization for families</li>
+                        <li>Unified AI travel assistant with family-specific optimization</li>
+                        <li>Democratic input collection ensuring all family voices heard</li>
+                        <li>Integrated booking platform eliminating multiple touchpoints</li>
+                        <li>Real-time AI adjustments with human spontaneity balance</li>
                     </ul>
                 </div>
                 
@@ -640,15 +710,15 @@
                     <div class="metrics-grid">
                         <div class="metric">
                             <div class="metric-value">85%</div>
-                            <div class="metric-label">Cost Transparency</div>
+                            <div class="metric-label">Stress Reduction</div>
                         </div>
                         <div class="metric">
                             <div class="metric-value">100%</div>
-                            <div class="metric-label">Family Safety</div>
+                            <div class="metric-label">Family Participation</div>
                         </div>
                         <div class="metric">
-                            <div class="metric-value">90%</div>
-                            <div class="metric-label">Rating Accuracy</div>
+                            <div class="metric-value">60%</div>
+                            <div class="metric-label">Time Saved</div>
                         </div>
                         <div class="metric">
                             <div class="metric-value">9.5/10</div>
@@ -659,7 +729,7 @@
             </div>
         </div>
 
-        <!-- Journey Map 2: Chatbot Enthusiast -->
+        <!-- Journey Map 2: Chatbot Seeker -->
         <div class="journey-map">
             <div class="persona-header chatbot-seeker">
                 <div class="persona-avatar">💬</div>
@@ -677,12 +747,13 @@
             
             <div class="journey-content">
                 <div class="scenario">
-                    <h3>🔍 Scenario</h3>
-                    <p>Had "awesome experience" in last trip but frustrated by delayed responses during planning. Seeking underrated places and better timing coordination.</p>
+                    <h3>📍 Scenario</h3>
+                    <p>Planning family trip to discover authentic hidden gem experiences but lacks time for extensive manual research. Desires conversational planning tool.</p>
                 </div>
                 
+                <!-- Visual Touchpoint Journey -->
                 <div class="touchpoint-journey">
-                    <div class="touchpoint-title">🔄 Current Touchpoint Journey</div>
+                    <div class="touchpoint-title">🔄 Current Touchpoint Journey (Start to End)</div>
                     <div class="touchpoint-flow">
                         <div class="touchpoint-item">
                             <span class="touchpoint-icon">💭</span>
@@ -691,7 +762,7 @@
                         </div>
                         <div class="touchpoint-arrow">→</div>
                         <div class="touchpoint-item">
-                            <span class="touchpoint-icon">📋</span>
+                            <span class="touchpoint-icon">📝</span>
                             <div class="touchpoint-name">Itinerary Creation</div>
                             <div class="touchpoint-emotion">Overwhelmed</div>
                         </div>
@@ -703,21 +774,15 @@
                         </div>
                         <div class="touchpoint-arrow">→</div>
                         <div class="touchpoint-item">
+                            <span class="touchpoint-icon">🎯</span>
+                            <div class="touchpoint-name">Pre-booking</div>
+                            <div class="touchpoint-emotion">Accomplished</div>
+                        </div>
+                        <div class="touchpoint-arrow">→</div>
+                        <div class="touchpoint-item">
                             <span class="touchpoint-icon">💎</span>
                             <div class="touchpoint-name">Hidden Gems</div>
                             <div class="touchpoint-emotion">Delighted</div>
-                        </div>
-                        <div class="touchpoint-arrow">→</div>
-                        <div class="touchpoint-item">
-                            <span class="touchpoint-icon">📞</span>
-                            <div class="touchpoint-name">Support</div>
-                            <div class="touchpoint-emotion">Grateful</div>
-                        </div>
-                        <div class="touchpoint-arrow">→</div>
-                        <div class="touchpoint-item">
-                            <span class="touchpoint-icon">🌟</span>
-                            <div class="touchpoint-name">Advocacy</div>
-                            <div class="touchpoint-emotion">Passionate</div>
                         </div>
                     </div>
                 </div>
@@ -725,37 +790,97 @@
                 <div class="phases">
                     <div class="phase">
                         <div class="phase-header">
-                            <div class="phase-icon">📞</div>
-                            <div class="phase-name">Support</div>
+                            <div class="phase-icon">💭</div>
+                            <div class="phase-name">Awareness</div>
                         </div>
-                        <div class="phase-section support">
-                            <div class="section-label">Support Needs</div>
-                            • Timely response management: "Don't get response on time" is her main frustration<br>
-                            • Schedule coordination: "Timings don't match" in group decisions<br>
-                            • Discovery assistance for hidden gems
+                        <div class="phase-section actions">
+                            <div class="section-label">Actions</div>
+                            Searches for unique destinations, looks for hidden gems, explores travel blogs
                         </div>
-                        <div class="expectation-gaps">
-                            <div class="section-label">Expectation vs Reality</div>
-                            <strong>Expected:</strong> Timely group communication<br>
-                            <strong>Reality:</strong> "Don't get response on time" and "Timings don't match"
+                        <div class="phase-section emotions">
+                            <div class="section-label">Emotions</div>
+                            <span class="emotion-tag excited">😊 Hopeful</span>
+                            <span class="emotion-tag frustrated">😤 Frustrated</span>
+                        </div>
+                        <div class="phase-section touchpoints">
+                            <div class="section-label">Touchpoints</div>
+                            Search engines, Travel blogs, Social media, Family discussions
+                        </div>
+                        <div class="phase-section pain-points">
+                            <div class="section-label">Pain Points</div>
+                            <strong>Organizer Overwhelm:</strong> Manual research burden, no conversational tools, generic results
                         </div>
                     </div>
                     
                     <div class="phase">
                         <div class="phase-header">
-                            <div class="phase-icon">🌟</div>
-                            <div class="phase-name">Advocacy</div>
+                            <div class="phase-icon">📝</div>
+                            <div class="phase-name">Consideration</div>
                         </div>
-                        <div class="phase-section advocacy">
-                            <div class="section-label">Advocacy Behaviors</div>
-                            • Values successful trip experiences for motivation<br>
-                            • Simple expense splitting approach<br>
-                            • Would advocate for chatbot-based planning and underrated place recommendations
+                        <div class="phase-section actions">
+                            <div class="section-label">Actions</div>
+                            Creates detailed itinerary manually, researches thoroughly, seeks family input
                         </div>
-                        <div class="expectation-gaps">
-                            <div class="section-label">Expectation vs Reality</div>
-                            <strong>Expected:</strong> Easy discovery of unique places<br>
-                            <strong>Reality:</strong> Needs tool support for finding "hidden gems" and "underrated places"
+                        <div class="phase-section emotions">
+                            <div class="section-label">Emotions</div>
+                            <span class="emotion-tag overwhelmed">😵 Overwhelmed</span>
+                            <span class="emotion-tag excited">😍 Excited</span>
+                        </div>
+                        <div class="phase-section touchpoints">
+                            <div class="section-label">Touchpoints</div>
+                            Planning spreadsheets, Family meetings, Review sites, Local guides
+                        </div>
+                        <div class="phase-section pain-points">
+                            <div class="section-label">Pain Points</div>
+                            <strong>Members Left Out:</strong> Limited family input, time-intensive discovery, validation difficulty
+                        </div>
+                    </div>
+                    
+                    <div class="phase">
+                        <div class="phase-header">
+                            <div class="phase-icon">🎯</div>
+                            <div class="phase-name">Purchase</div>
+                        </div>
+                        <div class="phase-section actions">
+                            <div class="section-label">Actions</div>
+                            Pre-books accommodations and experiences, secures hidden gem reservations
+                        </div>
+                        <div class="phase-section emotions">
+                            <div class="section-label">Emotions</div>
+                            <span class="emotion-tag satisfied">😌 Accomplished</span>
+                            <span class="emotion-tag excited">😍 Anticipatory</span>
+                        </div>
+                        <div class="phase-section touchpoints">
+                            <div class="section-label">Touchpoints</div>
+                            Booking platforms, Confirmation emails, Payment systems, Family calendar
+                        </div>
+                        <div class="phase-section pain-points">
+                            <div class="section-label">Pain Points</div>
+                            Multiple platforms, risk of full bookings, complex family coordination
+                        </div>
+                    </div>
+                    
+                    <div class="phase">
+                        <div class="phase-header">
+                            <div class="phase-icon">💎</div>
+                            <div class="phase-name">Experience</div>
+                        </div>
+                        <div class="phase-section actions">
+                            <div class="section-label">Actions</div>
+                            Enjoys unique hidden gems, family discovers authentic culture, shares discoveries
+                        </div>
+                        <div class="phase-section emotions">
+                            <div class="section-label">Emotions</div>
+                            <span class="emotion-tag excited">😍 Delighted</span>
+                            <span class="emotion-tag satisfied">😊 Fulfilled</span>
+                        </div>
+                        <div class="phase-section touchpoints">
+                            <div class="section-label">Touchpoints</div>
+                            Local experiences, Hidden gem locations, Photo sharing, Community feedback
+                        </div>
+                        <div class="phase-section pain-points">
+                            <div class="section-label">Pain Points</div>
+                            Some gems disappoint, balancing adventure with comfort, limited flexibility
                         </div>
                     </div>
                 </div>
@@ -763,10 +888,10 @@
                 <div class="solutions">
                     <h3>🚀 MyRideMate Value Opportunities</h3>
                     <ul>
-                        <li>Real-time response system for group coordination</li>
-                        <li>Smart timing synchronization for group decisions</li>
-                        <li>Curated database of underrated places and hidden gems</li>
-                        <li>Success-driven trip planning with proven outcomes</li>
+                        <li>Specialized travel chatbot with hidden gem database access</li>
+                        <li>Collaborative family itinerary building with democratic input</li>
+                        <li>Authentic experience curation with family-context understanding</li>
+                        <li>Automated booking system with guaranteed hidden gem reservations</li>
                     </ul>
                 </div>
                 
@@ -774,20 +899,20 @@
                     <h3>📊 Success Metrics</h3>
                     <div class="metrics-grid">
                         <div class="metric">
-                            <div class="metric-value">95%</div>
-                            <div class="metric-label">Response Time</div>
-                        </div>
-                        <div class="metric">
-                            <div class="metric-value">90%</div>
-                            <div class="metric-label">Timing Match</div>
-                        </div>
-                        <div class="metric">
                             <div class="metric-value">8+</div>
                             <div class="metric-label">Hidden Gems</div>
                         </div>
                         <div class="metric">
+                            <div class="metric-value">90%</div>
+                            <div class="metric-label">Family Involvement</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">75%</div>
+                            <div class="metric-label">Time Saved</div>
+                        </div>
+                        <div class="metric">
                             <div class="metric-value">9.8/10</div>
-                            <div class="metric-label">Trip Success</div>
+                            <div class="metric-label">Uniqueness</div>
                         </div>
                     </div>
                 </div>
@@ -797,7 +922,7 @@
         <!-- Journey Map 3: Research Maximizer -->
         <div class="journey-map">
             <div class="persona-header research-maximizer">
-                <div class="persona-avatar">📊</div>
+                <div class="persona-avatar">🔍</div>
                 <div class="persona-info">
                     <h2>3. The Research Maximizer</h2>
                     <div class="persona-details">
@@ -811,12 +936,18 @@
             </div>
             
             <div class="journey-content">
+                <div class="scenario">
+                    <h3>📍 Scenario</h3>
+                    <p>Planning bachelor group trip with comprehensive research and customized experience based on group size, duration, and activity preferences with full friend participation.</p>
+                </div>
+                
+                <!-- Visual Touchpoint Journey -->
                 <div class="touchpoint-journey">
-                    <div class="touchpoint-title">🔄 Current Touchpoint Journey</div>
+                    <div class="touchpoint-title">🔄 Current Touchpoint Journey (Start to End)</div>
                     <div class="touchpoint-flow">
                         <div class="touchpoint-item">
                             <span class="touchpoint-icon">📱</span>
-                            <div class="touchpoint-name">Advance Planning</div>
+                            <div class="touchpoint-name">Advance Planning (3 -6 months) - Calls,Inperson meets,Whatsapp</div>
                             <div class="touchpoint-emotion">Excited</div>
                         </div>
                         <div class="touchpoint-arrow">→</div>
@@ -843,55 +974,103 @@
                             <div class="touchpoint-name">Perfect Trip</div>
                             <div class="touchpoint-emotion">Validated</div>
                         </div>
-                        <div class="touchpoint-arrow">→</div>
-                        <div class="touchpoint-item">
-                            <span class="touchpoint-icon">🛠️</span>
-                            <div class="touchpoint-name">Support</div>
-                            <div class="touchpoint-emotion">Relieved</div>
-                        </div>
-                        <div class="touchpoint-arrow">→</div>
-                        <div class="touchpoint-item">
-                            <span class="touchpoint-icon">📢</span>
-                            <div class="touchpoint-name">Advocacy</div>
-                            <div class="touchpoint-emotion">Expert</div>
-                        </div>
                     </div>
                 </div>
                 
                 <div class="phases">
                     <div class="phase">
                         <div class="phase-header">
-                            <div class="phase-icon">🛠️</div>
-                            <div class="phase-name">Support</div>
+                            <div class="phase-icon">📊</div>
+                            <div class="phase-name">Awareness</div>
                         </div>
-                        <div class="phase-section support">
-                            <div class="section-label">Support Needs</div>
-                            • Group coordination assistance: "Getting everyone together" is his main frustration<br>
-                            • Response management: "Sometimes no one responds since they might be busy/lazy"<br>
-                            • Financial conflict resolution: Had issues with settlement timing and payment preferences
+                        <div class="phase-section actions">
+                            <div class="section-label">Actions</div>
+                            Researches cuisines extensively, analyzes Google reviews, cross-references data
                         </div>
-                        <div class="expectation-gaps">
-                            <div class="section-label">Expectation vs Reality</div>
-                            <strong>Expected:</strong> Places to match online expectations<br>
-                            <strong>Reality:</strong> "One of the places didn't match our expectation"
+                        <div class="phase-section emotions">
+                            <div class="section-label">Emotions</div>
+                            <span class="emotion-tag overwhelmed">😵 Overwhelmed</span>
+                            <span class="emotion-tag confident">🤓 Thorough</span>
+                        </div>
+                        <div class="phase-section touchpoints">
+                            <div class="section-label">Touchpoints</div>
+                            Google Reviews, Food blogs, Travel forums, Local guides, Comparison sites
+                        </div>
+                        <div class="phase-section pain-points">
+                            <div class="section-label">Pain Points</div>
+                            <strong>Organizer Overwhelm:</strong> Time-intensive research, information overload, conflicting reviews
                         </div>
                     </div>
                     
                     <div class="phase">
                         <div class="phase-header">
-                            <div class="phase-icon">📢</div>
-                            <div class="phase-name">Advocacy</div>
+                            <div class="phase-icon">⚙️</div>
+                            <div class="phase-name">Consideration</div>
                         </div>
-                        <div class="phase-section advocacy">
-                            <div class="section-label">Advocacy Behaviors</div>
-                            • Would advocate for customized planning apps based on trip parameters<br>
-                            • Uses systematic expense tracking (Splitwise + Excel verification)<br>
-                            • Values tool reliability: "Yes" to valuing feedback collection tools
+                        <div class="phase-section actions">
+                            <div class="section-label">Actions</div>
+                            Defines trip parameters, collects group preferences, creates customized options
                         </div>
-                        <div class="expectation-gaps">
-                            <div class="section-label">Expectation vs Reality</div>
-                            <strong>Expected:</strong> Smooth group coordination<br>
-                            <strong>Reality:</strong> Struggles with getting responses and settling expenses
+                        <div class="phase-section emotions">
+                            <div class="section-label">Emotions</div>
+                            <span class="emotion-tag frustrated">😤 Frustrated</span>
+                            <span class="emotion-tag confident">😎 Methodical</span>
+                        </div>
+                        <div class="phase-section touchpoints">
+                            <div class="section-label">Touchpoints</div>
+                            Group chats, Planning spreadsheets, Survey tools, Friend discussions
+                        </div>
+                        <div class="phase-section pain-points">
+                            <div class="section-label">Pain Points</div>
+                            <strong>Members Left Out:</strong> Complex consensus needed, manual coordination, conflicting preferences
+                        </div>
+                    </div>
+                    
+                    <div class="phase">
+                        <div class="phase-header">
+                            <div class="phase-icon">🎨</div>
+                            <div class="phase-name">Purchase</div>
+                        </div>
+                        <div class="phase-section actions">
+                            <div class="section-label">Actions</div>
+                            Books research-backed options, coordinates payments, finalizes customized itinerary
+                        </div>
+                        <div class="phase-section emotions">
+                            <div class="section-label">Emotions</div>
+                            <span class="emotion-tag satisfied">😌 Confident</span>
+                            <span class="emotion-tag excited">😍 Anticipatory</span>
+                        </div>
+                        <div class="phase-section touchpoints">
+                            <div class="section-label">Touchpoints</div>
+                            Booking platforms, Payment coordination, Group confirmations, Final planning
+                        </div>
+                        <div class="phase-section pain-points">
+                            <div class="section-label">Pain Points</div>
+                            Multiple platforms (AirBNB, Booking.com, MakeMyTrip), complex payment coordination, last-minute changes
+                        </div>
+                    </div>
+                    
+                    <div class="phase">
+                        <div class="phase-header">
+                            <div class="phase-icon">🎯</div>
+                            <div class="phase-name">Experience</div>
+                        </div>
+                        <div class="phase-section actions">
+                            <div class="section-label">Actions</div>
+                            Executes researched plan, enjoys cuisine experiences, group validates research
+                        </div>
+                        <div class="phase-section emotions">
+                            <div class="section-label">Emotions</div>
+                            <span class="emotion-tag excited">😍 Validated</span>
+                            <span class="emotion-tag satisfied">😊 Accomplished</span>
+                        </div>
+                        <div class="phase-section touchpoints">
+                            <div class="section-label">Touchpoints</div>
+                            Restaurant experiences, Group activities, Friend feedback, Social sharing
+                        </div>
+                        <div class="phase-section pain-points">
+                            <div class="section-label">Pain Points</div>
+                            High expectations, occasional disappointments, over-planning reduces spontaneity
                         </div>
                     </div>
                 </div>
@@ -899,10 +1078,10 @@
                 <div class="solutions">
                     <h3>🚀 MyRideMate Value Opportunities</h3>
                     <ul>
-                        <li>Automated group coordination with response tracking</li>
-                        <li>Customized planning based on trip parameters and group size</li>
-                        <li>Integrated expense management with flexible payment options</li>
-                        <li>Expectation verification system for destinations</li>
+                        <li>Research aggregator eliminating manual research burden</li>
+                        <li>Smart group parameter collection ensuring everyone's input</li>
+                        <li>Intelligent review analysis with cuisine-focused recommendations</li>
+                        <li>Automated customization engine based on group dynamics</li>
                     </ul>
                 </div>
                 
@@ -911,19 +1090,19 @@
                     <div class="metrics-grid">
                         <div class="metric">
                             <div class="metric-value">95%</div>
-                            <div class="metric-label">Group Response Rate</div>
-                        </div>
-                        <div class="metric">
-                            <div class="metric-value">90%</div>
-                            <div class="metric-label">Expectation Match</div>
+                            <div class="metric-label">Group Consensus</div>
                         </div>
                         <div class="metric">
                             <div class="metric-value">80%</div>
-                            <div class="metric-label">Coordination Efficiency</div>
+                            <div class="metric-label">Research Efficiency</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">70%</div>
+                            <div class="metric-label">Time Saved</div>
                         </div>
                         <div class="metric">
                             <div class="metric-value">9.2/10</div>
-                            <div class="metric-label">Trip Satisfaction</div>
+                            <div class="metric-label">Experience Accuracy</div>
                         </div>
                     </div>
                 </div>
@@ -948,16 +1127,17 @@
             
             <div class="journey-content">
                 <div class="scenario">
-                    <h3>🔍 Scenario</h3>
-                    <p>Enjoys fun during trips but frustrated when pictures don't match reality and climate affects enjoyment. Values economical, reliable, user-friendly tools.</p>
+                    <h3>📍 Scenario</h3>
+                    <p>Planning cost-effective group trip comparing multiple platforms, optimizing expenses, ensuring fair budget participation while maintaining experience quality.</p>
                 </div>
                 
+                <!-- Visual Touchpoint Journey -->
                 <div class="touchpoint-journey">
-                    <div class="touchpoint-title">🔄 Current Touchpoint Journey</div>
+                    <div class="touchpoint-title">🔄 Current Touchpoint Journey (Start to End)</div>
                     <div class="touchpoint-flow">
                         <div class="touchpoint-item">
                             <span class="touchpoint-icon">🔄</span>
-                            <div class="touchpoint-name">Platform Compare</div>
+                            <div class="touchpoint-name">AirBNB/Booking.com</div>
                             <div class="touchpoint-emotion">Exhausted</div>
                         </div>
                         <div class="touchpoint-arrow">→</div>
@@ -984,55 +1164,103 @@
                             <div class="touchpoint-name">Value Success</div>
                             <div class="touchpoint-emotion">Proud</div>
                         </div>
-                        <div class="touchpoint-arrow">→</div>
-                        <div class="touchpoint-item">
-                            <span class="touchpoint-icon">💡</span>
-                            <div class="touchpoint-name">Support</div>
-                            <div class="touchpoint-emotion">Informed</div>
-                        </div>
-                        <div class="touchpoint-arrow">→</div>
-                        <div class="touchpoint-item">
-                            <span class="touchpoint-icon">💯</span>
-                            <div class="touchpoint-name">Advocacy</div>
-                            <div class="touchpoint-emotion">Missionary</div>
-                        </div>
                     </div>
                 </div>
                 
                 <div class="phases">
                     <div class="phase">
                         <div class="phase-header">
-                            <div class="phase-icon">💡</div>
-                            <div class="phase-name">Support</div>
+                            <div class="phase-icon">🔄</div>
+                            <div class="phase-name">Awareness</div>
                         </div>
-                        <div class="phase-section support">
-                            <div class="section-label">Support Needs</div>
-                            • Visual accuracy verification: Frustrated when "pic and actual reality about tourist places are different"<br>
-                            • Weather contingency planning<br>
-                            • Cost optimization guidance
+                        <div class="phase-section actions">
+                            <div class="section-label">Actions</div>
+                            Compares prices across platforms, analyzes packages vs individual costs, cross-references reviews
                         </div>
-                        <div class="expectation-gaps">
-                            <div class="section-label">Expectation vs Reality</div>
-                            <strong>Expected:</strong> Affordable booking through platforms<br>
-                            <strong>Reality:</strong> "Apps like make my trip provide packages, but price is too high when we book ourselves"
+                        <div class="phase-section emotions">
+                            <div class="section-label">Emotions</div>
+                            <span class="emotion-tag frustrated">😤 Exhausted</span>
+                            <span class="emotion-tag overwhelmed">🤯 Overwhelmed</span>
+                        </div>
+                        <div class="phase-section touchpoints">
+                            <div class="section-label">Touchpoints</div>
+                            AirBNB, Booking.com, MakeMyTrip, Price comparison tools, Review sites, Calculator apps
+                        </div>
+                        <div class="phase-section pain-points">
+                            <div class="section-label">Pain Points</div>
+                            <strong>Organizer Overwhelm:</strong> Complex platform switching between AirBNB/Booking.com, time-consuming calculations, hidden fees
                         </div>
                     </div>
                     
                     <div class="phase">
                         <div class="phase-header">
-                            <div class="phase-icon">💯</div>
-                            <div class="phase-name">Advocacy</div>
+                            <div class="phase-icon">⚖️</div>
+                            <div class="phase-name">Consideration</div>
                         </div>
-                        <div class="phase-section advocacy">
-                            <div class="section-label">Advocacy Behaviors</div>
-                            • Prefers being a follower: "I feel happy that everything is taken care and I need just to enjoy"<br>
-                            • Uses expense tracking tools effectively (Splitwise)<br>
-                            • Would advocate for reliable, economical, user-friendly tools
+                        <div class="phase-section actions">
+                            <div class="section-label">Actions</div>
+                            Calculates total costs, coordinates group budget discussions, balances cost vs quality
                         </div>
-                        <div class="expectation-gaps">
-                            <div class="section-label">Expectation vs Reality</div>
-                            <strong>Expected:</strong> Accurate destination representation<br>
-                            <strong>Reality:</strong> Photos don't match actual tourist places
+                        <div class="phase-section emotions">
+                            <div class="section-label">Emotions</div>
+                            <span class="emotion-tag confused">🤔 Analytical</span>
+                            <span class="emotion-tag frustrated">😠 Stressed</span>
+                        </div>
+                        <div class="phase-section touchpoints">
+                            <div class="section-label">Touchpoints</div>
+                            Budget calculators, Group discussions, Spreadsheets, Payment apps
+                        </div>
+                        <div class="phase-section pain-points">
+                            <div class="section-label">Pain Points</div>
+                            <strong>Members Left Out:</strong> Budget discussions exclude some, complex coordination, varying comfort levels
+                        </div>
+                    </div>
+                    
+                    <div class="phase">
+                        <div class="phase-header">
+                            <div class="phase-icon">🎯</div>
+                            <div class="phase-name">Purchase</div>
+                        </div>
+                        <div class="phase-section actions">
+                            <div class="section-label">Actions</div>
+                            Books optimal value combination, manages payment collection, secures group discounts
+                        </div>
+                        <div class="phase-section emotions">
+                            <div class="section-label">Emotions</div>
+                            <span class="emotion-tag satisfied">😌 Accomplished</span>
+                            <span class="emotion-tag confident">😊 Proud</span>
+                        </div>
+                        <div class="phase-section touchpoints">
+                            <div class="section-label">Touchpoints</div>
+                            Booking confirmations, Payment coordination, Group notifications, Discount platforms
+                        </div>
+                        <div class="phase-section pain-points">
+                            <div class="section-label">Pain Points</div>
+                            Multiple confirmations to track, payment collection challenges, timing optimization
+                        </div>
+                    </div>
+                    
+                    <div class="phase">
+                        <div class="phase-header">
+                            <div class="phase-icon">🏆</div>
+                            <div class="phase-name">Experience</div>
+                        </div>
+                        <div class="phase-section actions">
+                            <div class="section-label">Actions</div>
+                            Enjoys cost-optimized experiences, tracks expenses, shares cost-saving strategies
+                        </div>
+                        <div class="phase-section emotions">
+                            <div class="section-label">Emotions</div>
+                            <span class="emotion-tag excited">😊 Proud</span>
+                            <span class="emotion-tag satisfied">😌 Validated</span>
+                        </div>
+                        <div class="phase-section touchpoints">
+                            <div class="section-label">Touchpoints</div>
+                            Experience tracking, Group celebrations, Social sharing, Expense validation
+                        </div>
+                        <div class="phase-section pain-points">
+                            <div class="section-label">Pain Points</div>
+                            Balancing savings vs quality, unexpected costs, group satisfaction balance
                         </div>
                     </div>
                 </div>
@@ -1040,10 +1268,10 @@
                 <div class="solutions">
                     <h3>🚀 MyRideMate Value Opportunities</h3>
                     <ul>
-                        <li>Verified photo accuracy system with real visitor uploads</li>
-                        <li>Weather-integrated planning with contingency options</li>
-                        <li>True cost comparison eliminating platform markups</li>
-                        <li>Effortless participation mode for non-organizers</li>
+                        <li><strong>💰 Value:</strong> Unified platform integrating AirBNB, Booking.com, MakeMyTrip with real-time price comparison</li>
+                        <li><strong>💰 Value:</strong> Inclusive budget planning ensuring all members' financial comfort</li>
+                        <li><strong>💰 Value:</strong> Automated group discount optimization and payment splitting</li>
+                        <li><strong>💰 Value:</strong> Value optimization engine balancing cost and experience quality</li>
                     </ul>
                 </div>
                 
@@ -1051,16 +1279,16 @@
                     <h3>📊 Success Metrics</h3>
                     <div class="metrics-grid">
                         <div class="metric">
-                            <div class="metric-value">95%</div>
-                            <div class="metric-label">Photo Accuracy</div>
-                        </div>
-                        <div class="metric">
                             <div class="metric-value">50%</div>
                             <div class="metric-label">Cost Savings</div>
                         </div>
                         <div class="metric">
-                            <div class="metric-value">90%</div>
-                            <div class="metric-label">User Friendliness</div>
+                            <div class="metric-value">100%</div>
+                            <div class="metric-label">Budget Participation</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">80%</div>
+                            <div class="metric-label">Platform Efficiency</div>
                         </div>
                         <div class="metric">
                             <div class="metric-value">8.8/10</div>
@@ -1089,12 +1317,13 @@
             
             <div class="journey-content">
                 <div class="scenario">
-                    <h3>🔍 Scenario</h3>
-                    <p>Prefers trekking/hiking over sightseeing, frustrated by remote accommodations and lack of responses from travel companies. Values historical significance and detailed planning.</p>
+                    <h3>📍 Scenario</h3>
+                    <p>Planning precisely timed group trip with detailed scheduling, exact timings, travel durations, and optimal sequences while accommodating different group paces.</p>
                 </div>
                 
+                <!-- Visual Touchpoint Journey -->
                 <div class="touchpoint-journey">
-                    <div class="touchpoint-title">🔄 Current Touchpoint Journey</div>
+                    <div class="touchpoint-title">🔄 Current Touchpoint Journey (Start to End)</div>
                     <div class="touchpoint-flow">
                         <div class="touchpoint-item">
                             <span class="touchpoint-icon">⏰</span>
@@ -1125,55 +1354,103 @@
                             <div class="touchpoint-name">Perfect Timing</div>
                             <div class="touchpoint-emotion">Accomplished</div>
                         </div>
-                        <div class="touchpoint-arrow">→</div>
-                        <div class="touchpoint-item">
-                            <span class="touchpoint-icon">🔧</span>
-                            <div class="touchpoint-name">Support</div>
-                            <div class="touchpoint-emotion">Precise</div>
-                        </div>
-                        <div class="touchpoint-arrow">→</div>
-                        <div class="touchpoint-item">
-                            <span class="touchpoint-icon">📋</span>
-                            <div class="touchpoint-name">Advocacy</div>
-                            <div class="touchpoint-emotion">Systematic</div>
-                        </div>
                     </div>
                 </div>
                 
                 <div class="phases">
                     <div class="phase">
                         <div class="phase-header">
-                            <div class="phase-icon">🔧</div>
-                            <div class="phase-name">Support</div>
+                            <div class="phase-icon">📋</div>
+                            <div class="phase-name">Awareness</div>
                         </div>
-                        <div class="phase-section support">
-                            <div class="section-label">Support Needs</div>
-                            • Responsive travel company communication: "Lack of responses from travel companies" frustrates her<br>
-                            • Safety-focused accommodation: Remote hotels "with literally no shops around" were problematic<br>
-                            • Activity preference reconciliation: "Different people like different activities"
+                        <div class="phase-section actions">
+                            <div class="section-label">Actions</div>
+                            Creates minute-by-minute schedule, calculates travel times, researches optimal durations
                         </div>
-                        <div class="expectation-gaps">
-                            <div class="section-label">Expectation vs Reality</div>
-                            <strong>Expected:</strong> Safe, accessible accommodations<br>
-                            <strong>Reality:</strong> "Very remote hotels with literally no shops or buildings around"
+                        <div class="phase-section emotions">
+                            <div class="section-label">Emotions</div>
+                            <span class="emotion-tag overwhelmed">😰 Stressed</span>
+                            <span class="emotion-tag frustrated">😤 Perfectionist</span>
+                        </div>
+                        <div class="phase-section touchpoints">
+                            <div class="section-label">Touchpoints</div>
+                            Google Maps, Time calculators, Scheduling apps, Travel duration research
+                        </div>
+                        <div class="phase-section pain-points">
+                            <div class="section-label">Pain Points</div>
+                            <strong>Organizer Overwhelm:</strong> Complex timing calculations, manual coordination, unpredictable delays
                         </div>
                     </div>
                     
                     <div class="phase">
                         <div class="phase-header">
-                            <div class="phase-icon">📋</div>
-                            <div class="phase-name">Advocacy</div>
+                            <div class="phase-icon">⭐</div>
+                            <div class="phase-name">Consideration</div>
                         </div>
-                        <div class="phase-section advocacy">
-                            <div class="section-label">Advocacy Behaviors</div>
-                            • Prefers adventure/educational travel: Values "historical importance or significance"<br>
-                            • Systematic expense tracking user<br>
-                            • Would advocate for detailed itinerary tools with timing and cost estimation
+                        <div class="phase-section actions">
+                            <div class="section-label">Actions</div>
+                            Analyzes ratings for timing, coordinates group pace preferences, balances efficiency with comfort
                         </div>
-                        <div class="expectation-gaps">
-                            <div class="section-label">Expectation vs Reality</div>
-                            <strong>Expected:</strong> Responsive service providers<br>
-                            <strong>Reality:</strong> "Lack of responses from travel companies"
+                        <div class="phase-section emotions">
+                            <div class="section-label">Emotions</div>
+                            <span class="emotion-tag confident">😎 Methodical</span>
+                            <span class="emotion-tag frustrated">😤 Coordinating</span>
+                        </div>
+                        <div class="phase-section touchpoints">
+                            <div class="section-label">Touchpoints</div>
+                            Rating platforms, Group coordination, Schedule sharing, Pace discussions
+                        </div>
+                        <div class="phase-section pain-points">
+                            <div class="section-label">Pain Points</div>
+                            <strong>Members Left Out:</strong> Different pace preferences, rigid schedule frustration, accommodation difficulty
+                        </div>
+                    </div>
+                    
+                    <div class="phase">
+                        <div class="phase-header">
+                            <div class="phase-icon">⚡</div>
+                            <div class="phase-name">Purchase</div>
+                        </div>
+                        <div class="phase-section actions">
+                            <div class="section-label">Actions</div>
+                            Books time-optimized experiences, coordinates schedules, secures timed reservations
+                        </div>
+                        <div class="phase-section emotions">
+                            <div class="section-label">Emotions</div>
+                            <span class="emotion-tag satisfied">😌 Controlled</span>
+                            <span class="emotion-tag excited">😊 Anticipatory</span>
+                        </div>
+                        <div class="phase-section touchpoints">
+                            <div class="section-label">Touchpoints</div>
+                            Timed bookings, Group calendar sync, Reservation confirmations, Schedule sharing
+                        </div>
+                        <div class="phase-section pain-points">
+                            <div class="section-label">Pain Points</div>
+                            Multiple timed bookings, complex synchronization, timing conflict risks
+                        </div>
+                    </div>
+                    
+                    <div class="phase">
+                        <div class="phase-header">
+                            <div class="phase-icon">📊</div>
+                            <div class="phase-name">Experience</div>
+                        </div>
+                        <div class="phase-section actions">
+                            <div class="section-label">Actions</div>
+                            Executes perfectly timed itinerary, monitors schedule adherence, analyzes performance
+                        </div>
+                        <div class="phase-section emotions">
+                            <div class="section-label">Emotions</div>
+                            <span class="emotion-tag excited">😊 Accomplished</span>
+                            <span class="emotion-tag satisfied">😌 Validated</span>
+                        </div>
+                        <div class="phase-section touchpoints">
+                            <div class="section-label">Touchpoints</div>
+                            Real-time tracking, Group coordination, Performance analytics, Experience optimization
+                        </div>
+                        <div class="phase-section pain-points">
+                            <div class="section-label">Pain Points</div>
+                            Balancing efficiency vs spontaneity, group stress when delayed, over-optimization reduces fun
                         </div>
                     </div>
                 </div>
@@ -1181,10 +1458,10 @@
                 <div class="solutions">
                     <h3>🚀 MyRideMate Value Opportunities</h3>
                     <ul>
-                        <li>Guaranteed responsive customer service with timing commitments</li>
-                        <li>Safety-verified accommodations with accessibility ratings</li>
-                        <li>Historical significance integration with detailed place information</li>
-                        <li>Activity preference matching for diverse group interests</li>
+                        <li><strong>💰 Value:</strong> Smart timing optimization with real-time traffic adjustments</li>
+                        <li><strong>💰 Value:</strong> Dynamic schedule coordination including all group member paces</li>
+                        <li><strong>💰 Value:</strong> Smart buffer time management and flexibility zones</li>
+                        <li><strong>💰 Value:</strong> Performance analytics with continuous timing improvement insights</li>
                     </ul>
                 </div>
                 
@@ -1192,26 +1469,27 @@
                     <h3>📊 Success Metrics</h3>
                     <div class="metrics-grid">
                         <div class="metric">
-                            <div class="metric-value">95%</div>
-                            <div class="metric-label">Response Rate</div>
+                            <div class="metric-value">98%</div>
+                            <div class="metric-label">Schedule Accuracy</div>
                         </div>
                         <div class="metric">
-                            <div class="metric-value">100%</div>
-                            <div class="metric-label">Safety Standards</div>
+                            <div class="metric-value">85%</div>
+                            <div class="metric-label">Group Satisfaction</div>
                         </div>
                         <div class="metric">
                             <div class="metric-value">90%</div>
-                            <div class="metric-label">Activity Match</div>
+                            <div class="metric-label">Time Optimization</div>
                         </div>
                         <div class="metric">
-                            <div class="metric-value">9.0/10</div>
-                            <div class="metric-label">Planning Accuracy</div>
+                            <div class="metric-value">75%</div>
+                            <div class="metric-label">Stress Reduction</div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
+        <!-- Summary -->
         <div class="summary">
             <h2>🚗 MyRideMate: Transforming Group Travel Planning</h2>
             <p style="font-size: 1rem; margin-bottom: 20px; line-height: 1.6;">
@@ -1268,12 +1546,13 @@
             </div>
             
             <div style="margin-top: 25px; font-size: 1.1rem; font-style: italic; font-weight: 600;">
-                <strong>🚗 Mission:</strong> Transform group travel planning into an enjoyable, inclusive experience where every member contributes and every trip becomes memorable! ✨
+                <strong>🚗 Mission:</strong> Transform group travel planning into an enjoyable, inclusive experience where every member contributes and every trip becomes amazing! ✨
             </div>
         </div>
     </div>
 
     <script>
+        // Smooth animations
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -1290,6 +1569,7 @@
             observer.observe(map);
         });
 
+        // Interactive elements
         document.querySelectorAll('.phase').forEach(phase => {
             phase.addEventListener('mouseenter', () => {
                 phase.style.transform = 'translateY(-3px) scale(1.02)';
@@ -1308,4 +1588,3 @@
     </script>
 </body>
 </html>
-                
