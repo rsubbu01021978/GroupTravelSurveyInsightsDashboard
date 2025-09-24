@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthcare Product Compliance Checklist</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+        
+        .product-leader-note {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .pyramid-overview {
+            padding: 40px;
+            background: #f8f9fa;
+            text-align: center;
+        }
+        
+        .pyramid-title {
+            font-size: 2.2em;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-weight: 300;
+        }
+        
+        .pyramid-subtitle {
+            color: #7f8c8d;
+            font-size: 1.1em;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .pyramid-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            margin: 30px 0;
+            position: relative;
+        }
+        
+        .pyramid-layer {
+            position: relative;
+            padding: 25px;
+            text-align: center;
+            color: white;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .pyramid-layer:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .layer-fda { 
+            width: 90%; 
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+        }
+        
+        .layer-hipaa { 
+            width: 80%; 
+            background: linear-gradient(135deg, #e67e22, #d35400);
+        }
+        
+        .layer-gdpr { 
+            width: 70%; 
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+        }
+        
+        .layer-iso { 
+            width: 60%; 
+            background: linear-gradient(135deg, #27ae60, #229954);
+        }
+        
+        .layer-security { 
+            width: 50%; 
+            background: linear-gradient(135deg, #3498db, #2980b9);
+        }
+        
+        .layer-number {
+            position: absolute;
+            left: -50px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: white;
+            color: #2c3e50;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2em;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .layer-title {
+            font-size: 1.4em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .layer-role {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+        
+        .checklist-section {
+            padding: 40px;
+        }
+        
+        .compliance-layer {
+            background: white;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            overflow: hidden;
+            border-left: 6px solid;
+        }
+        
+        .layer-fda-check { border-left-color: #e74c3c; }
+        .layer-hipaa-check { border-left-color: #e67e22; }
+        .layer-gdpr-check { border-left-color: #f39c12; }
+        .layer-iso-check { border-left-color: #27ae60; }
+        .layer-security-check { border-left-color: #3498db; }
+        
+        .layer-header {
+            padding: 30px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .layer-fda-check .layer-header { background: linear-gradient(135deg, #e74c3c, #c0392b); }
+        .layer-hipaa-check .layer-header { background: linear-gradient(135deg, #e67e22, #d35400); }
+        .layer-gdpr-check .layer-header { background: linear-gradient(135deg, #f39c12, #e67e22); }
+        .layer-iso-check .layer-header { background: linear-gradient(135deg, #27ae60, #229954); }
+        .layer-security-check .layer-header { background: linear-gradient(135deg, #3498db, #2980b9); }
+        
+        .layer-info {
+            flex: 1;
+        }
+        
+        .layer-name {
+            font-size: 1.6em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .layer-purpose {
+            font-size: 1em;
+            opacity: 0.9;
+        }
+        
+        .responsibility-badge {
+            background: rgba(255,255,255,0.2);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            backdrop-filter: blur(10px);
+        }
+        
+        .layer-content {
+            padding: 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        .checklist-column {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+        }
+        
+        .column-title {
+            color: #2c3e50;
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 15px;
+            padding: 12px;
+            background: white;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+        
+        .checklist-item:hover {
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .checkbox {
+            min-width: 20px;
+            height: 20px;
+            border: 2px solid #bdc3c7;
+            border-radius: 4px;
+            margin-top: 2px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .checkbox:hover {
+            border-color: #3498db;
+        }
+        
+        .checkbox.checked {
+            background: #27ae60;
+            border-color: #27ae60;
+            position: relative;
+        }
+        
+        .checkbox.checked::after {
+            content: "✓";
+            color: white;
+            position: absolute;
+            top: -2px;
+            left: 3px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        .checklist-text {
+            flex: 1;
+            font-size: 0.95em;
+            line-height: 1.4;
+            color: #2c3e50;
+        }
+        
+        .priority-high { border-left: 4px solid #e74c3c; }
+        .priority-medium { border-left: 4px solid #f39c12; }
+        .priority-low { border-left: 4px solid #27ae60; }
+        
+        .recommendations {
+            background: linear-gradient(135deg, #ecf0f1, #bdc3c7);
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+        
+        .rec-title {
+            color: #2c3e50;
+            font-size: 1.1em;
+            font-weight: bold;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .rec-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .rec-list li {
+            padding: 8px 0;
+            color: #34495e;
+            font-size: 0.95em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .rec-list li::before {
+            content: "💡";
+            font-size: 1.1em;
+        }
+        
+        .progress-summary {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .progress-title {
+            font-size: 2em;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+        
+        @media (max-width: 768px) {
+            .layer-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .pyramid-container {
+                padding: 0 20px;
+            }
+            
+            .layer-number {
+                left: -30px;
+                width: 30px;
+                height: 30px;
+                font-size: 1em;
+            }
+            
+            .pyramid-layer {
+                width: 100% !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Healthcare Product Compliance Checklist</h1>
+            <p>Strategic Compliance Framework for Product Leaders</p>
+            <div class="product-leader-note">
+                <strong>Product Leader Perspective:</strong> This checklist transforms regulatory requirements into actionable product development milestones, ensuring compliance becomes a competitive advantage rather than a roadblock.
+            </div>
+        </div>
+        
+        <div class="pyramid-overview">
+            <h2 class="pyramid-title">Compliance Pyramid Framework</h2>
+            <p class="pyramid-subtitle">Each layer represents a critical compliance domain with specific roles and responsibilities for your product team</p>
+            
+            <div class="pyramid-container">
+                <div class="pyramid-layer layer-fda">
+                    <div class="layer-number">1</div>
+                    <div class="layer-title">FDA Regulations (21 CFR 11/820)</div>
+                    <div class="layer-role">Product Safety & Quality Foundation</div>
+                </div>
+                
+                <div class="pyramid-layer layer-hipaa">
+                    <div class="layer-number">2</div>
+                    <div class="layer-title">HIPAA Compliance</div>
+                    <div class="layer-role">US Healthcare Data Privacy</div>
+                </div>
+                
+                <div class="pyramid-layer layer-gdpr">
+                    <div class="layer-number">3</div>
+                    <div class="layer-title">GDPR Compliance</div>
+                    <div class="layer-role">EU Personal Data Protection</div>
+                </div>
+                
+                <div class="pyramid-layer layer-iso">
+                    <div class="layer-number">4</div>
+                    <div class="layer-title">ISO Standards (13485/62304)</div>
+                    <div class="layer-role">Medical Device Quality & Lifecycle</div>
+                </div>
+                
+                <div class="pyramid-layer layer-security">
+                    <div class="layer-number">5</div>
+                    <div class="layer-title">Security Framework (ISO 27001/SOC 2)</div>
+                    <div class="layer-role">Information Security & Trust</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="checklist-section">
+            <!-- Layer 1: FDA -->
+            <div class="compliance-layer layer-fda-check">
+                <div class="layer-header">
+                    <div class="layer-info">
+                        <div class="layer-name">1. FDA Regulations (21 CFR Part 11 & 820)</div>
+                        <div class="layer-purpose">Product Safety & Quality Foundation - Medical Device Software</div>
+                    </div>
+                    <div class="responsibility-badge">Owned: Product + QA + Regulatory</div>
+                </div>
+                
+                <div class="layer-content">
+                    <div class="checklist-column">
+                        <div class="column-title">
+                            📋 Implementation Checklist
+                        </div>
+                        
+                        <div class="checklist-item priority-high">
+                            <div class="checkbox" onclick="toggleCheck(this)"></div>
+                            <div class="checklist-text">Establish electronic signature validation system with user authentication and digital timestamps</div>
+                        </div>
+                        
+                        <div class="checklist-item priority-high">
+                            <div class="checkbox" onclick="toggleCheck(this)"></div>
+                            <div class="checklist-text">Implement comprehensive audit trail logging for all system actions and data modifications</div>
+                        </div>
+                        
+                        <div class="checklist-item priority-medium">
+                            <div class="checkbox" onclick="toggleCheck(this)"></div>
+                            <div class="checklist-text">Document Quality Management System (QMS) with design controls and risk management</div>
+                        </div>
+                        
+                        <div class="checklist-item priority-medium">
+                            <div class="checkbox" onclick="toggleCheck(this)"></div>
+                            <div class="checklist-text">Create validation protocols for software functionality and user interface testing</div>
+                        </div>
+                        
+                        <div class="checklist-item priority-low">
+                            <div class="checkbox" onclick="toggleCheck(this)"></div>
+                            <div class="checklist-text">Establish change control procedures for software updates and configuration management</div>
+                        </div>
+                    </div>
+                    
+                    <div class="checklist-column">
+                        <div class="column-title">
+                            👥 Team Responsibilities
+                        </div>
+                        
+                        <div class="checklist-item">
+                            <div class="checkbox" onclick="toggleCheck(this)"></div>
+                            <div class="checklist-text"><strong>Product Manager:</strong> Define FDA classification and regulatory strategy for product features</div>
+                        </div>
+                        
+                        <div class="checklist-item">
+                            <div class="checkbox" onclick="toggleCheck(this)"></div>
+                            <div class="checklist-text"><strong>Engineering:</strong> Implement audit trails, e-signatures, and validation testing frameworks</div>
+                        </div>
+                        
+                        <div class="checklist-item">
+                            <div class="checkbox" onclick="toggleCheck(this)"></div>
+                            <div class="checklist-text"><strong>QA Lead:</strong> Develop validation protocols and maintain QMS documentation</div>
+                        </div>
+                        
+                        <div class="checklist-item">
+                            <div class="checkbox" onclick="toggleCheck(this)"></div>
+                            <div class="checklist-text"><strong>Regulatory Affairs:</strong> Ensure FDA submission readiness and compliance verification</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="recommendations">
+                    <div class="rec-title">💡 Product Leader Recommendations</div>
+                    <ul class="rec-list">
+                        <li>Start FDA compliance planning in product discovery phase, not post-development</li>
+                        <li>Budget 15-20% additional development time for validation and documentation</li>
+                        <li>Consider FDA Software as Medical Device (SaMD) classification early in roadmap planning</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Layer 2: HIPAA -->
+            <div class="compliance-layer layer-hipaa-check">
+                <div class="layer-header">
+                    <div class="layer-info">
+                        <div class="layer-name">2. HIPAA Compliance</div>
+                        <div class="layer-purpose">US Healthcare Data Privacy - Protected Health Information (PHI)</div>
+                    </div>
+                    <div class="responsibility-badge">Owned: Product + Security + Legal</div>
+                </div>
+                
+                <div class="layer-content">
+                    <div class="checklist-column">
+                        <div class="column-title">
+                            📋 Implementation Checklist
+                        </div>
+                        
+                        <div class="checklist-item priority-high">
+                            <div class="checkbox" onclick="toggleCheck(this)"></div>
+                            <div class="checklist-text">Implement end-to-end encryption for all PHI in transit and at rest (AES-256 minimum)</div>
+                        </div>
+                        
+                        <div class="checklist-item priority-high">
+                            <div class="checkbox" onclick="toggleCheck(this)"></div>
+                            <div class="checklist-text">Deploy role-based access controls with multi-factor authentication for PHI access</div>
+                        </div>
+                        
+                        <div class="checklist-item priority-high">
+                            <div class="checkbox" onclick="toggleCheck(this)"></div>
+                            <div class="checklist-text">Establish breach detection and notification system (72-hour reporting requirement)</div>
+                        </div>
+                        
+                        <div class="checklist-item priority-medium">
+                            <div class="checkbox" onclick="toggleCheck(this)"></div>
+                            <div class="checklist-text">Create Business Associate Agreements (BAAs) templates for third-party vendors</div>
+                        </div>
+                        
+                        <div class="checklist-item priority-medium">
+                            <div class="checkbox" onclick="toggleCheck(this)"></div>
+                            <div class="checklist-text">Implement automatic session timeouts and audit logging for PHI access</div>
+                        </div>
+                    </div>
+                    
+                    <div class="checklist-column">
+                        <div class="column-title">
+                            👥 Team Responsibilities
+                        </div>
+                        
+                        <div class="checklist-item">
+                            <div class="checkbox" onclick="toggleCheck(this)"></div>
+                            <div class="checklist-text"><strong>Product Manager:</strong> Define PHI data flows and user consent mechanisms in product requirements</div>
+                        </div>
+                        
+                        <div class="checklist-item">
+                            <div class="checkbox" onclick="toggleCheck(this)"></div>
+                            <div class="checklist-text"><strong>Security Engineer:</strong> Implement encryption, access controls, and monitoring systems</div>
+                        </div>
+                        
+                        <div class="checklist-item">
+                            <div class="checkbox" onclick="toggleCheck(this)"></div>
+                            <div class="checklist-text"><strong>Legal/Privacy:</strong> Draft privacy policies, BAAs, and breach response procedures</div>
+                        </div>
+                        
+                        <div class="checklist-item">
+                            <div class="checkbox" onclick="toggleCheck(this)"></div>
+                            <div class="checklist-text"><strong>DevOps:</strong> Configure secure infrastructure and backup systems for PHI protection</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="recommendations">
+                    <div class="rec-title">💡 Product Leader Recommendations</div>
+                    <ul class="rec-list">
+                        <li>Implement "privacy by design" - build HIPAA controls into product architecture from day one</li>
+                        <li>Conduct regular HIPAA risk assessments before major product releases</li>
+                        <li>Train customer success team on HIPAA-compliant communication and support practices</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Layer 3: GDPR -->
+            <div class="compliance-layer layer-gdpr-check">
+                <div class="layer-header">
+                    <div class="layer-info">
+                        <div class="layer-name">3. GDPR Compliance</div>
+                        <div class="layer-purpose">EU Personal Data Protection - Data Subject Rights</div>
+                    </div>
+                    <div class="responsibility-badge">Owned: Product + Privacy + Legal</div>
+                </div>
+                
+                <div class="layer-content">
+                    <div class="checklist-column">
+                        <div class="column-title">
+                            📋 Implementation Checklist
+                        </div>
+                        
+                        <div class="checklist-item priority-high">
+                            <div class="checkbox" onclick="toggleCheck(this)"></div>
+                            <div class="checklist-text">Build explicit consent mechanisms with granular opt-in/opt-out controls</div>
+                        </div>
+                        
+                        <div class="checklist-item priority-high">
+                            <div class="checkbox" onclick="toggleCheck(this)"></div>
+                            <div class="checklist-text">Implement data portability features allowing users to export their data</div>
+                        </div>
+                        
+                        <div class="checklist-item priority-high">
+                            <div class="checkbox" onclick="toggleCheck(this)"></div>
+                            <div class="checklist-text">Create "right to be forgotten" functionality for complete data deletion</div>
+                        </div>
+                        
+                        <div class="checklist-item priority-medium">
+                            <div class="checkbox" onclick="toggleCheck(this)"></div>
+                            <div class="checklist-text">Conduct Data Protection Impact Assessments (DPIAs) for high-risk processing</div>
+                        </div>
+                        
+                        <div class="checklist-item priority-medium">
+                            <div class="checkbox" onclick="toggleCheck(this)"></div>
+                            <div class="checklist-text">Establish 72-hour breach notification system to supervisory authorities</div>
+                        </div>
+                    </div>
+                    
+                    <div class="checklist-column">
+                        <div class="column-title">
+                            👥 Team Responsibilities
+                        </div>
+                        
+                        <div class="checklist-item">
+                            <div class="checkbox" onclick="toggleCheck(this)"></div>
+                            <div class="checklist-text"><strong>Product Manager:</strong> Design user consent flows and data subject rights interfaces</div>
+                        </div>
+                        
+                        <div class="checklist-item">
+                            <div class="checkbox" onclick="toggleCheck(this)"></div>
+                            <div class="checklist-text"><strong>Engineering:</strong> Build data export, deletion, and consent management systems</div>
+                        </div>
+                        
+                        <div class="checklist-item">
+                            <div class="checkbox" onclick="toggleCheck(this)"></div>
+                            <div class="checklist-text"><strong>Data Protection Officer:</strong> Oversee DPIAs and ensure lawful basis for data processing</div>
+                        </div>
+                        
+                        <div class="checklist-item">
+                            <div class="checkbox" onclick="toggleCheck(this)"></div>
+                            <div class="checklist-text"><strong>Customer Support:</strong> Handle data subject requests and privacy inquiries</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="recommendations">
+                    <div class="rec-title">💡 Product Leader Recommendations</div>
+                    <ul class="rec-list">
+                        <li>Map data flows early - know what personal data you collect, why, and where it goes</li>
+                        <li>Build consent fatigue resistance with smart, contextual permission requests</li>
+                        <li>Create GDPR-compliant analytics strategy to maintain product insights while respecting privacy</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Layer 4: ISO Standards -->
+            <div class="compliance-layer layer-iso-check">
+                <div class="layer-header">
+                    <div class="layer-info">
+                        <div class="layer-name">4. ISO Standards (13485 & IEC 62304)</div>
+                        <div class="layer-purpose">Medical Device Quality Management & Software Lifecycle</div>
+                    </div>
+                    <div class="responsibility-badge">Owned: QA + Engineering + Product</div>
+                </div>
+                
+                <div class="layer-content">
+                    <div class="checklist-column">
+                        <div class="column-title">
+                            📋 Implementation Checklist
+                        </div>
+                        
+                        <div class="checklist-item priority-high">
+                            <div class="checkbox" onclick="toggleCheck(this)"></div>
+                            <div class="checklist-text">Classify software safety (Class A, B, or C) and define development lifecycle accordingly</div>
+                        </div>
+                        
+                        <div class="checklist-item priority-high">
+                            <div class="checkbox" onclick="toggleCheck(this)"></div>
+                            <div class="checklist-text">Implement risk management process integrated with software development (ISO 14971)</div>
+                        </div>
+                        
+                        <div class="checklist-item priority-medium">
+                            <div class="checkbox" onclick="toggleCheck(this)"></div>
+                            <div class="checklist-text">Establish verification and validation protocols for each development phase</div>
+                        </div>
+                        
+                        <div class="checklist-item priority-medium">
+                            <div class="checkbox" onclick="toggleCheck(this)"></div>
+                            <div class="checklist-text">Create software maintenance and problem resolution procedures</div>
+                        </div>
+                        
+                        <div class="checklist-item priority-low">
+                            <div class="checkbox" onclick="toggleCheck(this)"></div>
+                            <div class="checklist-text">Document configuration management and version control processes</div>
+                        </div>
+                    </div>
+                    
+                    <div class="checklist-column">
+                        <div class="column-title">
+                            👥 Team Responsibilities
+                        </div>
+                        
+                        <div class="checklist-item">
+                            <div class="checkbox" onclick="toggleCheck(this)"></div>
+                            <div class="checklist-text"><strong>Product Manager:</strong> Define software safety classification and user requirements</div>
+                        </div>
+                        
+                        <div class="checklist-item">
+                            <div class="checkbox" onclick="toggleCheck(this)"></div>
+                            <div class="checklist-text"><strong>Engineering Lead:</strong> Implement development lifecycle processes and configuration management</div>
+                        </div>
+                        
+                        <div class="checklist-item">
+                            <div class="checkbox" onclick="toggleCheck(this)"></div>
+                            <div class="checklist-text"><strong>QA Manager:</strong> Design verification and validation testing strategies</div>
+                        </div>
+                        
+                        <div class="checklist-item">
+                            <div class="checkbox" onclick="toggleCheck(this)"></div>
+                            <div class="checklist-text"><strong>Risk Manager:</strong> Conduct software risk analysis and hazard identification</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="recommendations">
+                    <div class="rec-title">💡 Product Leader Recommendations</div>
+                    <ul class="rec-list">
+                        <li>Start with safety classification - it determines your entire development approach</li>
+                        <li>Integrate risk management into sprint planning, not as an afterthought</li>
+                        <li>Plan for 25-30% additional development time for Class B/C software verification</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Layer 5: Security Framework -->
+            <div class="compliance-layer layer-security-check">
+                <div class="layer-header">
+                    <div class="layer-info">
+                        <div class="layer-name">5. Security Framework (ISO 27001 & SOC 2)</div>
+                        <div class="layer-purpose">Information Security Management & Cloud Trust</div>
+                    </div>
+                    <div class="responsibility-badge">Owned: Security + DevOps + Product</div>
+                </div>
+                
+                <div class="layer-content">
+                    <div class="checklist-column">
+                        <div class="column-title">
+                            📋 Implementation Checklist
+                        </div>
+                        
+                        <div class="checklist-item priority-high">
+                            <div class="checkbox" onclick="toggleCheck(this)"></div>
+                            <div class="checklist-text">Establish Information Security Management System (ISMS) with documented policies</div>
+                        </div>
+                        
+                        <div class="checklist-item priority-high">
+                            <div class="checkbox" onclick="toggleCheck(this)"></div>
+                            <div class="checklist-text">Implement continuous security monitoring and incident response procedures</div>
+                        </div>
+                        
+                        <div class="checklist-item priority-medium">
+                            <div class="checkbox" onclick="toggleCheck(this)"></div>
+                            <div class="checklist-text">Conduct regular penetration testing and vulnerability assessments</div>
+                        </div>
+                        
+                        <div class="checklist-item priority-medium">
+                            <div class="checkbox" onclick="toggleCheck(this)"></div>
+                            <div class="checklist-text">Establish third-party vendor security assessment and monitoring programs</div>
+                        </div>
+                        
+                        <div class="checklist-item priority-low">
+                            <div class="checkbox" onclick="toggleCheck(this)"></div>
+                            <div class="checklist-text">Prepare for annual SOC 2 Type II audits with evidence collection automation</div>
+                        </div>
+                    </div>
+                    
+                    <div class="checklist-column">
+                        <div class="column-title">
+                            👥 Team Responsibilities
+                        </div>
+                        
+                        <div class="checklist-item">
+                            <div class="checkbox" onclick="toggleCheck(this)"></div>
+                            <div class="checklist-text"><strong>Product Manager:</strong> Define security requirements and threat modeling for features</div>
+                        </div>
+                        
+                        <div class="checklist-item">
+                            <div class="checkbox" onclick="toggleCheck(this)"></div>
+                            <div class="checklist-text"><strong>Security Engineer:</strong> Implement security controls and monitoring systems</div>
+                        </div>
+                        
+                        <div class="checklist-item">
+                            <div class="checkbox" onclick="toggleCheck(this)"></div>
+                            <div class="checklist-text"><strong>DevOps:</strong> Secure CI/CD pipelines and infrastructure hardening</div>
+                        </div>
+                        
+                        <div class="checklist-item">
+                            <div class="checkbox" onclick="toggleCheck(this)"></div>
+                            <div class="checklist-text"><strong>Compliance Officer:</strong> Coordinate audits and maintain security documentation</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="recommendations">
+                    <div class="rec-title">💡 Product Leader Recommendations</div>
+                    <ul class="rec-list">
+                        <li>Make security a selling point - SOC 2 compliance accelerates enterprise sales cycles</li>
+                        <li>Automate security control evidence collection to reduce audit burden</li>
+                        <li>Build security testing into CI/CD pipeline for continuous compliance validation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="progress-summary">
+            <h2 class="progress-title">Compliance as Competitive Advantage</h2>
+            <p>Transform regulatory requirements from obstacles into strategic differentiators that accelerate market entry, build customer trust, and create sustainable competitive advantages in healthcare technology.</p>
+        </div>
+    </div>
+    
+    <script>
+        function toggleCheck(checkbox) {
+            checkbox.classList.toggle('checked');
+        }
+    </script>
+</body>
+</html>
